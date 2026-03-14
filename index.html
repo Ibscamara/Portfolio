@@ -1,0 +1,523 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Ibrahima Sory CAMARA</title>
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+          background: #0f172a;
+          color: #e2e8f0;
+          line-height: 1.6;
+        }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+header {
+      background-image:
+        linear-gradient(rgba(5, 15, 40, 0.72), rgba(5, 15, 40, 0.72)),
+        url("cover.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 110px 20px 90px;
+      text-align: center;
+      position: relative;
+      .hero-overlay {
+      max-width: 950px;
+      margin: 0 auto;
+      background: rgba(10, 20, 45, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 35px 25px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.28);
+    }
+
+.profile-photo {
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(56, 189, 248, 0.16);
+  color: #7dd3fc;
+  border: 1px solid rgba(125, 211, 252, 0.35);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+header h1 {
+  font-size: 3.3rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: 1.12rem;
+  color: #dbeafe;
+  max-width: 760px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 24px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-top: 0;
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.38);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0f2fe;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 90px 15px 70px;
+  }
+
+  .hero-overlay {
+    padding: 25px 18px;
+    border-radius: 18px;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  header h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #38bdf8;
+  color: #0f172a;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.95);
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #1e293b;
+  z-index: 10;
+}
+
+nav a {
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #f8fafc;
+}
+
+.card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  margin-bottom: 20px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill {
+  background: #334155;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project h3 {
+  margin-bottom: 10px;
+  color: #f8fafc;
+}
+
+.project p {
+  color: #cbd5e1;
+  margin-bottom: 10px;
+}
+
+.project .tag {
+  display: inline-block;
+  background: #0ea5e9;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid #1e293b;
+  color: #94a3b8;
+}
+
+.contact-links a {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 8px;
+  }
+}
+
+  </style>
+  
+</head>
+
+<body>
+      <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#competences">Compétences</a>
+        <a href="#projets">Projets</a>
+        <a href="#contacts">Contacts</a>
+        
+        </nav>  <header id="accueil">
+      <div class="hero-overlay">
+        <div class="hero-badge">Portfolio académique • Mathématiques • Data • statistiques • Modélisation</div>
+    
+        <h2>Bienvenue sur mon Portfolio</h2>
+        <img src="photo.jpg" alt="Photo de Ibrahima Sory Camara" class="profile-photo">
+        <h1>Ibrahima Sory Camara</h1>
+        <p class="hero-subtitle">
+          Étudiant en licence de mathématiques à l’Université Le Havre Normandie.
+          Je m’intéresse particulièrement aux statistiques, à l’analyse de données, à la cryptographie,
+          à la finance et à la modélisation mathématique.
+        </p>
+        <p class="hero-subtitle">
+          <!Étudiant en licence de mathématiques à l’Université Le Havre Normandie.
+          Je m’intéresse particulièrement aux statistiques, à l’analyse de données,
+          à la finance et à la modélisation mathématique.
+          Bienvenue sur mon portfolio.>
+        </p>
+        <div class="hero-buttons">
+          
+          <a class="btn" href="#projets">Voir mes projets</a>
+          <a class="btn " href="#contacts">Me contacter</a>
+          
+        </div>
+      </div>
+</header>
+    
+ 
+</div>
+
+  </section>  <section id="apropos">
+    <h2> À propos</h2>
+    <div class="card">
+     <P>
+        Je suis Ibrahima Sory Camara et je suis actuellement étudiant en troisième année de licence de mathématiques à l’Université Le Havre Normandie.
+     </p>
+     <p>
+        Au cours mes études, j’ai développé un intérêt particulier pour les probabilités, les statistiques et l’analyse de données. Ce sont des domaines qui permettent d’utiliser les mathématiques pour comprendre des phénomènes réels et analyser des données issues de différents contextes comme la santé, l’économie, la finance ou la science.
+     </p>
+     <p>Pendant ma formation, j’ai étudié plusieurs disciplines fondamentales des mathématiques, notamment l’analyse, l’algèbre, les probabilités, les statistiques et l’analyse numérique. J’ai également réalisé différents travaux académiques portant sur les fonctions hyperboliques, l’extension des corps en algèbre et une introduction à la théorie spectrale.
+     </p>
+     Je m’intéresse aussi à l’utilisation de l’informatique dans les mathématiques appliquées. J’ai acquis des bases en programmation scientifique avec Python, R et Scilab, ainsi qu’en rédaction scientifique avec LaTeX.
+     <p> 
+     </p>
+        À travers ce portfolio, je présente quelques projets et travaux réalisés au cours de ma formation.
+    </P> 
+    </div> 
+
+  </section> 
+  <section id="competences">
+    <h2>Compétences</h2>
+    <div class="card">
+      <div class="skills">
+        <span class="skill">Analyse</span>
+        <span class="skill">Algèbre</span>
+        <span class="skill">Probabilités</span>
+        <span class="skill">Statistiques</span>
+        <span class="skill">Résolution de systèmes non linéaires</span>
+        <span class="skill">Python</span>
+        <span class="skill">R</span>
+        <span class="skill">Algorithmique</span>
+        <span class="skill">LaTeX</span>
+        <span class="skill">Scilab</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">Travail en équipe</span>
+        <span class="skill">Communication</span>
+      </div>
+    </div> 
+ </section> 
+ 
+  <section id="projets">
+    <h2>Projets </h2>
+    <h2>Mes projets en Mathématiques</h2>
+    <div class="projects">
+        <div class="card project">
+              <h3>Fonctions hyperboliques et applications (2022)</h3>
+              <p>
+                Étude des propriétés des fonctions hyperboliques et de leurs applications
+                en physique et dans les équations différentielles.
+              </p>
+              <span class="tag">Mathématiques</span>
+              <span class="tag">Équations différentielles</span>
+              <p> Consulter le projet:</p>
+                <a class="btn" href="./Fonction_hyperpolique.pdf" target="_blank">Voir le PDF</a>
+                <a class="btn" href="Fcts_hyperbolique.tex" target="_blank">Voir le code LaTeX</a>
+        </div>
+    
+        <div class="card project">
+            <h3>Projet  - Introduction à la théorie spectrale (2025)</h3>
+            <p>
+                Étude des opérateurs et des valeurs propres dans des espaces vectoriels.
+                Ce projet universitaire m’a permis d’approfondir mes connaissances
+                en analyse mathématique et en structures linéaires.
+            </p>
+            <span class="tag">Mathématiques</span>
+            <span class="tag">Analyse</span>
+            <p> Consulter le projet:</p>
+            <a class="btn" href="./Fonction_hyperpolique.pdf" target="_blank">Voir le PDF</a>
+            <a class="btn" href="Fcts_hyperbolique.tex" target="_blank">Voir le code LaTeX</a>
+            
+        </div>
+
+        <div class="card project">
+            <h3>Projet - Extensions de corps et applications (2024)</h3>
+            <p>
+                Projet universitaire réalisé en algèbre sur les structures algébriques,
+                les extensions de corps et leurs applications en théorie de Galois.
+            </p>
+            <span class="tag">Algèbre</span>
+            <span class="tag">Mathématiques</span>
+            <p> Consulter le projet:</p>
+            <a class="btn" href="./ExtensionDeCorps.pdf" target="_blank">Voir le PDF</a>
+            <a class="btn" href="main.tex" target="_blank">Voir le code LaTeX</a>
+
+        </div>
+  </section>
+
+  <section id="projets">
+    <h2>Mes projets information</h2>
+    <div class="projects">
+    <div class="card project">
+        <h3>Projet 4 — Mini application web</h3>
+        <p>
+            Réalisation d’une petite application web pour présenter un service ou afficher des données.
+        </p>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <p> Consulter le projet:</p>
+        <a class="btn" href="./Fonction_hyperpolique.pdf" target="_blank">Voir le Site</a>
+        <a class="btn" href="Fcts_hyperbolique.tex" target="_blank">Voir le code LaTeX</a>
+    
+    </div>
+ 
+    <div class="card project">
+        <h3>Projet 5 — Traitement de données  </h3>
+        <p>
+          Réalisation d’une petite application web pour présenter un service ou afficher des données.
+        </p>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <p> Consulter le projet:</p>
+        <a class="btn" href="./Fonction_hyperpolique.pdf" target="_blank">Voir le Site</a>
+        <a class="btn" href="Fcts_hyperbolique.tex" target="_blank">Voir le code LaTeX</a>
+    </div>
+ 
+    <div class="card project">
+        <h3>Projet 5 — Traitement de données  </h3>
+        <p>
+          Réalisation d’une petite application web pour présenter un service ou afficher des données.
+        </p>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <p> Consulter le projet:</p>
+        <a class="btn" href="./Fonction_hyperpolique.pdf" target="_blank">Voir le Site</a>
+        <a class="btn" href="Fcts_hyperbolique.tex" target="_blank">Voir le code LaTeX</a>
+    </div>
+    
+    <div class="card project">
+    <h3>Mini-outil Python de gestion et d’analyse de données (2025)</h3>
+
+    <p>
+        Ce projet a consisté à développer en Python un petit outil permettant de manipuler des données,
+        d’effectuer des calculs statistiques simples et de gérer des informations enregistrées dans un fichier CSV.
+        Il s’appuie sur l’écriture de fonctions, la lecture et l’écriture de fichiers ainsi que la création de classes
+        en programmation orientée objet.
+    </p>
+
+    <p><strong>Fonctionnalités réalisées :</strong></p>
+    <ul>
+        <li>Calcul de multiples, moyenne, écart-type et factorielle</li>
+        <li>Lecture et écriture de données dans un fichier CSV</li>
+        <li>Calcul de statistiques sur un comptage de passagers</li>
+        <li>Création de classes Etudiant et Formation</li>
+    </ul>
+
+    <span class="tag">Python</span>
+    <span class="tag">CSV</span>
+    <span class="tag">Programmation orientée objet</span>
+
+    <p>Consulter le projet :</p>
+    <a class="btn" href="./main.py" target="_blank">Voir le code</a>
+</div>
+    
+    
+  </section> 
+  
+  <section id="Mes Certifications">
+    <h2>Mes Certifications</h2>
+    <div class="Mes Certifications">
+    <div class="card Mes Certifications">
+      <h3>Certification PIX (2023)</h3>
+      <p>
+         Certification obtenue à l’Université Le Havre Normandie avec un score de 225 PIX.
+         Elle valorise mes compétences numériques en information, communication,
+         création de contenu et programmation.
+      </p>
+      <span class="tag">PIX</span>
+      <span class="tag">Compétences numériques</span>
+      <p>Consuleter</p>
+      <a class="btn" href="certification-pix-Ibrahiama.pdf" target="_blank">Voir l'attstation</a>
+    </div>
+
+    <div class="card projets">
+      <h3>Engagement associatif - AGELH</h3>
+      <p>
+        Secrétaire Général et chargé de la communication depuis novembre 2025
+        au sein de l’Association Guinéenne des Étudiants du Havre.
+        Missions : communication interne et externe, rédaction de comptes rendus,
+        promotion d’événements et accueil des nouveaux étudiants.
+      </p>
+      <span class="tag">Communication</span>
+      <span class="tag">Engagement</span>
+        <p>Consuleter</p>
+        <a class="btn" href="AttestationEngagement AGELH .pdf" target="_blank">Voir l'attstation</a>
+    </div>
+  </section>
+  
+  <section id="contacts">
+    <h2>contacts</h2>
+    <div class="card">
+      <p>Tu peux me contacter ici :</p>
+      <div class="contact-links">
+        <div class="skills">
+        <span class="skill"> <a href="mailto:ibrasory2022@gmail.com">ibrasory2022@gmail.com</a>  </span>
+        <span class="skill"> <a href="https://github.com/Ibscamara" target="_blank">GitHub</a> </span>
+        <span class="skill"> <a href="https://www.linkedin.com/in/ibrahima-sory-camara-b49674366?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a>  </span>
+        
+        </div>
+        </div>
+    </div>
+  </section>  <footer>
+<p>© 2026 Ibrahima Sory Camara - Portfolio personnel</p>
+</footer>
+</body>
+</html>
