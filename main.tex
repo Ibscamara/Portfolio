@@ -1,0 +1,1623 @@
+
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tcolorbox}
+\usepackage{setspace}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Bibliographie.bib}
+
+% Redéfinition des commandes de sectionnement pour les sections
+\newcounter{defcount}[section]
+\renewcommand{\thedefcount}{\thesection.\arabic{defcount}}
+
+\newcounter{propcount}[section]
+\renewcommand{\thepropcount}{\thesection.\arabic{propcount}}
+
+\newcounter{remcount}[section]
+\renewcommand{\theremcount}{\thesection.\arabic{remcount}}
+
+\newcounter{corcount}[section]
+\renewcommand{\thecorcount}{\thesection.\arabic{corcount}}
+
+% Commandes pour les sections
+\newcommand{\definition}[2]{%
+\refstepcounter{defcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition \thedefcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Définition \thedefcount. #1}
+\ignorespaces}
+
+\newcommand{\proposition}[2]{%
+\refstepcounter{propcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Proposition \thepropcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Proposition \thepropcount. #1}
+\ignorespaces}
+
+\newcommand{\remarque}[2]{%
+\refstepcounter{remcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Remarque \theremcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Remarque \theremcount. #1}
+\ignorespaces}
+
+\newcommand{\corollaire}[2]{%
+\refstepcounter{corcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Corollaire \thecorcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Corollaire \thecorcount. #1}
+\ignorespaces}
+
+% Sous-sections
+\newcounter{defcountsub}[subsection]
+\renewcommand{\thedefcountsub}{\thesubsection.\arabic{defcountsub}}
+
+\newcounter{propcountsub}[subsection]
+\renewcommand{\thepropcountsub}{\thesubsection.\arabic{propcountsub}}
+
+\newcounter{remsubcount}[subsection]
+\renewcommand{\theremsubcount}{\thesubsection.\arabic{remsubcount}}
+
+\newcounter{corsubcount}[subsection]
+\renewcommand{\thecorsubcount}{\thesubsection.\arabic{corsubcount}}
+
+\newcommand{\definitionsub}[2]{%
+\refstepcounter{defcountsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition \thedefcountsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\propositionsub}[2]{%
+\refstepcounter{propcountsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Proposition \thepropcountsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\remarquesub}[2]{%
+\refstepcounter{remsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Remarque \theremsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\corollairesub}[2]{%
+\refstepcounter{corsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Corollaire \thecorsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+% Sous-sous-sections
+\newcounter{defcountsubsub}[subsubsection]
+\renewcommand{\thedefcountsubsub}{\thesubsubsection.\arabic{defcountsubsub}}
+
+\newcounter{propcountsubsub}[subsubsection]
+\renewcommand{\thepropcountsubsub}{\thesubsubsection.\arabic{propcountsubsub}}
+
+\newcounter{remsubsubcount}[subsubsection]
+\renewcommand{\theremsubsubcount}{\thesubsubsection.\arabic{remsubsubcount}}
+
+\newcounter{corsubsubcount}[subsubsection]
+\renewcommand{\thecorsubsubcount}{\thesubsubsection.\arabic{corsubsubcount}}
+
+\newcommand{\definitionsubsub}[2]{%
+\refstepcounter{defcountsubsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition \thedefcountsubsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\propositionsubsub}[2]{%
+\refstepcounter{propcountsubsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Proposition \thepropcountsubsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\remarquesubsub}[2]{%
+\refstepcounter{remsubsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Remarque \theremsubsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\corollairesubsub}[2]{%
+\refstepcounter{corsubsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Corollaire \thecorsubsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+% Titre
+\newcommand{\titre}{Extensions de corps}
+\newcommand{\auteurs}{Ibrahima Sory Camara et Mustapha Abdel-Wahid}
+\newcommand{\cours}{L2 Mathématiques 2023-2024}
+\newcommand{\universite}{Université Le Havre Normandie}
+\newcommand{\ndate}{Mai 2023}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{logo_universite_le_havre.jpg}
+\vfill
+
+\Huge
+\textbf{\titre}
+\vfill
+
+\large
+\textbf{\auteurs}
+
+\vspace{0.7cm}
+
+\large
+\textsc{\cours}
+
+\large
+\textsc{\universite}
+
+\Large
+\ndate
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\begin{abstract}
+A field extension is the addition of new elements to an existing field to form a larger field, allowing for the resolution of equations that are impossible to solve in the original field. Extensions can be finite or infinite, algebraic (where each new element is a root of a polynomial from the original field) or transcendental (where some elements are not roots of any polynomial). Field extensions are useful in several branches of mathematics.
+\end{abstract}
+
+\section{Introduction}
+L'extension de corps est un concept fondamental en mathématiques, notamment en algèbre. Elle porte sur l'étude d'un corps par rapport à un autre. Dans ce rapport nous retracerons l'évolution historique des extensions de corps, puis aborderons les structures algébriques en définissant quelques structures avant de fournir une définition précise de ce concept. Ensuite, nous énoncerons et prouverons certaines de ses propriétés, enfin nous mettrons en lumière quelques-uns de ses domaines d'application.
+
+\section{Histoire}
+L'histoire des extensions de corps en mathématiques est étroitement liée aux développements de la théorie des corps et de l'algèbre. Les travaux pionniers de mathématiciens comme Évariste Galois et Richard Dedekind ont été fondamentaux.
+
+Évariste Galois, au début du 19\textsuperscript{e} siècle, a jeté les bases de la théorie moderne des corps en introduisant des concepts clés sur les extensions de corps finies et leur relation avec les solutions des équations polynomiales. Ses travaux, bien que limités par sa mort prématurée, ont ouvert la voie à des développements majeurs dans la théorie des groupes et des corps \cite{GaloisTheory,ExtensionField}.
+
+Richard Dedekind a apporté des contributions cruciales en définissant rigoureusement les concepts d'extension de corps et de degré de l'extension. Il a également exploré les extensions infinies et les propriétés des extensions algébriques et transcendantes \cite{FieldMathematics}.
+
+Depuis ces contributions initiales, de nombreux mathématiciens ont enrichi la théorie des extensions de corps, explorant diverses formes d'extensions comme les extensions transcendantes, les extensions par adjonction et les extensions de corps multiples. Ces travaux ont établi les fondations de la théorie moderne des extensions de corps, qui a des applications importantes dans plusieurs domaines des mathématiques, notamment en algèbre, en géométrie et en théorie des nombres \cite{ExtensionField}.
+
+\begin{center}
+\vspace{1cm}
+\begin{minipage}[b]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Evariste_galois(1).jpg}
+\captionof{figure}{Évariste Galois (1811-1832)}
+\cite{Galois}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}[b]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Richard_Dedekind_1900s.jpg}
+\captionof{figure}{Richard Dedekind (1831-1916)}
+\cite{Richard}
+\end{minipage}
+\end{center}
+
+\newpage
+\section{Structures algébriques}
+\begin{spacing}{1.4}
+Une structure algébrique est un ensemble muni d'une ou plusieurs lois ou opérations (dites internes et/ou externes), ces lois ou opérations satisfont certaines relations telles que l’associativité, la commutativité ou la distributivité.
+\end{spacing}
+
+\subsection{Quelques structures classiques}
+Voici quelques structures algébriques que nous devons comprendre pour la suite de ce rapport : les groupes, les anneaux, les corps et les espaces vectoriels.
+
+\subsubsection{Groupe}
+\begin{spacing}{1.4}
+\definitionsubsub{}{
+On appelle groupe tout ensemble $G$ non vide muni d'une loi de composition interne $*$ tel que :
+\begin{enumerate}
+\item la loi $*$ est associative :
+\[
+\forall x,y,z \in G \qquad (x*y)*z = x*(y*z)
+\]
+\item l'ensemble $G$ admet un élément neutre pour la loi $*$ :
+\[
+\exists e \in G \qquad \forall x \in G \qquad x*e = e*x = x
+\]
+\item tout élément de $G$ est symétrisable pour la loi $*$ :
+\[
+\forall x \in G \qquad \exists \bar{x} \in G \qquad x*\bar{x} = \bar{x}*x = e
+\]
+Si $(G,*)$ est un groupe tel que la loi $*$ soit commutative, c'est-à-dire :
+\[
+\forall x,y \in G \qquad x*y = y*x
+\]
+alors le groupe $(G,*)$ est dit \textbf{commutatif} ou encore \textbf{abélien}.
+\end{enumerate}
+}
+
+Exemples : $(\mathbb{Z},+)$, $(\mathbb{Q}^*,\times)$, $(\mathbb{C},+)$ et $(M_n(\mathbb{C}),+)$ sont des groupes.
+\end{spacing}
+
+\definitionsubsub{Sous-groupe}{
+Soit $G$ un groupe. On appelle \textbf{sous-groupe} de $G$ une partie $H$ de $G$ telle que :
+\begin{itemize}
+\item[$\triangleright$] $H$ est non vide ;
+\item[$\triangleright$] $H$ est stable pour la loi de composition interne :
+\[
+\forall x,y \in H \qquad xy \in H
+\]
+\item[$\triangleright$] $H$ est stable pour le passage à l'inverse :
+\[
+\forall x \in H \qquad x^{-1} \in H
+\]
+\end{itemize}
+}
+
+\subsubsection{Anneaux}
+\begin{spacing}{1.4}
+\definitionsubsub{}{Un \textbf{anneau} est un ensemble non vide $A$ muni de deux lois, dont la première est notée additivement et la seconde multiplicativement, tel que :
+\begin{enumerate}
+\item[$\triangleright$] $(A,+)$ est un groupe abélien ;
+\item[$\triangleright$] la loi $*$ est associative :
+\[
+\forall x,y,z \in A \qquad x*(y*z)=(x*y)*z
+\]
+\item[$\triangleright$] l'ensemble $A$ admet un élément neutre pour la loi $*$ :
+\[
+\exists e \in A \qquad \forall x \in A \qquad e*x = x*e = x
+\]
+($e$ est l'élément neutre ou élément unité pour la loi $*$, généralement noté $1_A$) ;
+\item[$\triangleright$] la loi $*$ est distributive par rapport à la loi $+$ :
+\[
+\forall x,y,z \in A \qquad (y+z)x = yx+zx \quad \text{et} \quad x(y+z)=xy+xz.
+\]
+\end{enumerate}
+Si la loi $*$ est commutative, alors $A$ est un anneau commutatif.}
+\end{spacing}
+
+Exemples : $(\mathbb{Z},+,\times)$, $(\mathbb{R},+,\times)$, $(\mathbb{Q},+,\times)$, $(\mathbb{C},+,\times)$ sont des anneaux.
+
+\begin{spacing}{1.4}
+\definitionsubsub{Sous-anneau}{Soient $(A,+,\times)$ un anneau et $B$ une partie de $A$. On dit que $B$ est un \textbf{sous-anneau} de $A$ si :
+\begin{enumerate}
+\item $B$ contient l'élément neutre de $A$ :
+\[
+1_A \in B
+\]
+\item $(B,+)$ est un sous-groupe de $(A,+)$, c'est-à-dire :
+\[
+\forall x,y \in B \qquad x-y \in B
+\]
+\item $B$ est stable pour la multiplication :
+\[
+\forall x,y \in B \qquad x\times y \in B
+\]
+\end{enumerate}
+}
+\end{spacing}
+
+Si $a$ admet un inverse dans $A$, alors celui-ci est unique et se note traditionnellement $a^{-1}$ ou $\bar{a}$. L'ensemble des éléments inversibles de $A$ est noté $A^\times$.
+
+Exemples :
+\[
+\mathbb{Z}^\times = \{-1,1\}, \qquad \mathbb{Q}^\times = \mathbb{Q}^*, \qquad \mathbb{R}^\times = \mathbb{R}^*, \qquad \mathbb{C}^\times = \mathbb{C}^*
+\]
+
+\subsubsection{Corps}
+\begin{spacing}{1.4}
+\definitionsubsub{}{Un \textbf{corps} est un \textbf{anneau} dans lequel tous les éléments non nuls sont \textbf{inversibles}. Si la deuxième loi est commutative, on dit que le corps est commutatif.}
+\end{spacing}
+
+Exemples : $(\mathbb{R},+,\times)$, $(\mathbb{Q},+,\times)$, $(\mathbb{C},+,\times)$ sont des corps.
+
+\begin{spacing}{1.4}
+\definitionsubsub{Sous-corps}{
+Soit $(\mathbb{K},\oplus,\odot)$ un corps et $L \subset \mathbb{K}$. On dit que $L$ est un \textbf{sous-corps} de $\mathbb{K}$ si :
+\begin{enumerate}
+\item[$\bullet$] $(L,+,\times)$ est un sous-anneau de $(\mathbb{K},\oplus,\odot)$ ;
+\item[$\bullet$] tous les éléments de $L$ sauf $0_L$ sont inversibles pour la loi induite $\times$.
+\end{enumerate}
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsubsub{Sous-corps engendré}{
+Soit $\mathbb{K}$ un corps et $S$ une partie de $\mathbb{K}$. L'ensemble des sous-corps de $\mathbb{K}$ contenant $S$ est non vide (car il contient $\mathbb{K}$), et donc l'intersection de tous ces sous-corps est un sous-corps de $\mathbb{K}$. C'est le plus petit sous-corps contenant $S$ ; on l'appelle \textbf{sous-corps engendré par $S$} \cite{AlgèbreI}.
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsubsub{Homomorphisme de corps}{
+Soient $(\mathbb{K},+, \cdot)$ et $(L, \oplus, \odot)$ deux corps. Une application $f:\mathbb{K} \rightarrow L$ est un homomorphisme de corps si elle satisfait les propriétés suivantes :
+\begin{enumerate}
+\item conservation de l'addition :
+\[
+f(a+b)=f(a)\oplus f(b)
+\]
+\item conservation de la multiplication :
+\[
+f(a\cdot b)=f(a)\odot f(b)
+\]
+\item conservation de l'élément neutre additif :
+\[
+f(0_{\mathbb{K}})=0_L
+\]
+\item conservation de l'élément neutre multiplicatif :
+\[
+f(1_{\mathbb{K}})=1_L
+\]
+\end{enumerate}
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\remarquesub{}{Plus généralement, un \textbf{homomorphisme} de corps est nécessairement \textbf{injectif}. Si $x\neq 0$, $x$ a un inverse $x^{-1}$, donc $j(x)j(x^{-1})=j(xx^{-1})=j(1)=1$. Un \textbf{automorphisme} de corps $\mathbb{K}$ est un homomorphisme de corps de $\mathbb{K}$ dans $\mathbb{K}$ qui est bijectif.}
+\end{spacing}
+
+\subsubsection{Espace vectoriel}
+\begin{spacing}{1.4}
+\definitionsubsub{}{Soient $(E,+)$ un groupe abélien et $(\mathbb{K},+,\times)$ un corps commutatif. On dit que $E$ est un $\mathbb{K}$-espace vectoriel s'il existe une application
+\[
+\begin{array}{ccccc}
+\mathbb{K}\times E & \to & E\\
+(\alpha,x) & \mapsto & \alpha x
+\end{array}
+\]
+vérifiant les axiomes suivants :
+\begin{enumerate}
+\item
+\[
+1_{\mathbb{K}}x = x
+\]
+\item
+\[
+\forall x \in E,\ \forall \lambda,\alpha \in \mathbb{K}\qquad (\alpha+\lambda)x=\alpha x+\lambda x
+\]
+\item
+\[
+\forall \alpha,\lambda \in \mathbb{K},\ \forall x \in E \qquad (\alpha\lambda)x=\alpha(\lambda x)
+\]
+\item
+\[
+\forall \alpha \in \mathbb{K},\ \forall x,y \in E \qquad \alpha(x+y)=\alpha x+\alpha y
+\]
+\end{enumerate}}
+\end{spacing}
+
+\newpage
+\section{Extension de corps}
+
+\subsection{Généralités}
+\begin{spacing}{1.4}
+\definitionsub{}{Soit $k$ un corps. On appelle extension de $k$ tout corps $\mathbb{K}$ tel qu'il existe un homomorphisme de corps, noté $j$, du corps $k$ dans $\mathbb{K}$.}
+\end{spacing}
+
+La notation $\mathbb{K}/k$ signifie que le corps $\mathbb{K}$ est une extension du corps $k$.
+
+\begin{spacing}{1.4}
+\propositionsub{}{Si $k$ est un sous-corps de $\mathbb{K}$, alors $\mathbb{K}$ est une extension de $k$.}
+\end{spacing}
+
+\begin{proof}
+Supposons que $k$ est un sous-corps de $\mathbb{K}$. Montrons que $\mathbb{K}$ est une extension du corps $k$.
+
+Soit $j:k\to\mathbb{K}$ définie par $j(x)=x$. Alors $j$ est un homomorphisme de corps. Ainsi, $\mathbb{K}$ est une extension de $k$.
+\end{proof}
+
+\begin{spacing}{1.4}
+\remarquesub{}{Réciproquement, un homomorphisme de corps $j:k\to \mathbb{K}$ est forcément injectif. Par conséquent le sous-corps $j(k)$ de $\mathbb{K}$ est isomorphe à $k$. En identifiant $k$ et $j(k)$, on peut dire que $k$ est un sous-corps de $\mathbb{K}$.}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\mathbb{C}$ est une extension de $\mathbb{R}$ ;
+\item $\mathbb{R}$ est une extension de $\mathbb{Q}$ ;
+\item $\mathbb{Q}(\sqrt{2})=\{a+b\sqrt{2}\mid a,b\in\mathbb{Q}\}$ est une extension de $\mathbb{Q}$ ;
+\item le corps $\mathbb{K}(X)$ des fractions rationnelles à coefficients dans $\mathbb{K}$ est une extension de $\mathbb{K}$.
+\end{itemize}
+
+\subsection{Visualisation}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[fill=green!30] (2,0) ellipse(3.5 and 1.5) node[align=center, xshift=4cm] {$\mathbb{C}$};
+\draw[fill=red!30] (1.4,0) ellipse (2.6 and 1) node[align=center, xshift=2.8cm] {$\mathbb{R}$};
+\draw[fill=blue!30] (1,0) ellipse (2 and 0.7) node {$\mathbb{Q}$};
+\end{tikzpicture}
+\end{center}
+
+$\mathbb{C}$ est une extension de $\mathbb{R}$ notée $\mathbb{C}/\mathbb{R}$.
+
+$\mathbb{R}$ est une extension de $\mathbb{Q}$ notée $\mathbb{R}/\mathbb{Q}$.
+
+Et on dira aussi que $\mathbb{R}$ est une extension intermédiaire de $\mathbb{C}/\mathbb{Q}$.
+
+\begin{spacing}{1.4}
+\propositionsub{}{Une extension $L/K$ est naturellement munie d'une structure de $K$-espace vectoriel.}
+\end{spacing}
+
+\begin{proof}
+Soient $(K,+,\cdot)$ un corps commutatif et $(L,\oplus,\odot)$ une extension de $K$, où $L$ est un corps contenant $K$.
+
+Définissons la loi externe sur $L$ par
+\[
+\forall \alpha\in K,\ \forall x\in L,\qquad \alpha\odot x=\alpha\cdot x.
+\]
+
+Il suffit alors de vérifier les axiomes d'un espace vectoriel, ce qui découle directement des propriétés du corps $L$.
+\end{proof}
+
+\subsection{Degré d'extension}
+\begin{spacing}{1.4}
+\propositionsub{Dimension}{La dimension est un invariant associé à tout espace vectoriel $E$ sur un corps $\mathbb{K}$. La dimension de $E$ est le cardinal commun à toutes ses bases. Ce nombre est noté $\dim_{\mathbb{K}}(E)$ ou $\dim(E)$ s'il n'y a pas d'ambiguïté.}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\dim_{\mathbb{R}}(\mathbb{R}^n)=n$ ;
+\item $\dim_{\mathbb{R}}(\mathbb{C})=2$, avec base $(1,i)$.
+\end{itemize}
+
+\begin{spacing}{1.4}
+\definitionsub{}{Soit $E$ une extension d'un corps $\mathbb{K}$. On appelle \textbf{degré d'extension} la dimension de $E$ comme $\mathbb{K}$-espace vectoriel. Si $\dim_{\mathbb{K}}E=+\infty$, on dit que $E$ est une extension de degré infini de $\mathbb{K}$. Si cette dimension est finie, on note
+\[
+[E:\mathbb{K}] = \dim_{\mathbb{K}}E.
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\propositionsub{}{Soit $\mathbb{K}$ une extension d'un corps $k$. On a
+\[
+[\mathbb{K}:k]=1 \iff k=\mathbb{K}.
+\]}
+\end{spacing}
+
+\begin{proof}
+Si $[\mathbb{K}:k]=1$, alors $\mathbb{K}$ admet une base à un seul élément sur $k$, donc tout élément de $\mathbb{K}$ est de la forme $\lambda\cdot 1$ avec $\lambda\in k$. Ainsi $\mathbb{K}=k$.
+
+Réciproquement, si $\mathbb{K}=k$, alors évidemment $\dim_k(\mathbb{K})=1$.
+\end{proof}
+
+Exemples :
+\begin{enumerate}
+\item Si $E/K$ est une extension telle que $[E:K]=1$, alors $E=K$ ;
+\item $[\mathbb{C}:\mathbb{R}]=2$ ;
+\item $\mathbb{R}/\mathbb{Q}$ est une extension infinie.
+\end{enumerate}
+
+\begin{spacing}{1.4}
+\propositionsub{Théorème de la base télescopique}{
+Soient $M/L$ et $L/\mathbb{K}$ deux extensions finies. Si $(e_i)_{i\in I}$ est une base de $L$ sur $\mathbb{K}$ et $(f_j)_{j\in J}$ une base de $M$ sur $L$, alors $(e_if_j)_{(i,j)\in I\times J}$ est une base de $M$ sur $\mathbb{K}$.
+
+En particulier,
+\[
+[M:\mathbb{K}] = [M:L]\,[L:\mathbb{K}].
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\begin{tikzpicture}[scale=1.5]
+\draw[fill=red!30] (2,0) ellipse(3.5 and 1.5) node[align=center, xshift=4cm] {$M$};
+\draw[fill=yellow!50] (1.4,0) ellipse (2.6 and 1) node[align=center, xshift=2.8cm] {$L$};
+\draw[fill=blue!50] (1,0) ellipse (2 and 0.7) node {$\mathbb{K}$};
+\end{tikzpicture}
+\end{spacing}
+
+\begin{proof}
+Soit $m\in M$. Comme $(f_j)$ est une base de $M$ sur $L$, on peut écrire
+\[
+m=\sum_{j\in J}\alpha_jf_j
+\]
+avec $\alpha_j\in L$. Comme $(e_i)$ est une base de $L$ sur $\mathbb{K}$, chaque $\alpha_j$ s'écrit
+\[
+\alpha_j=\sum_{i\in I}\lambda_{ij}e_i
+\]
+avec $\lambda_{ij}\in\mathbb{K}$. Donc
+\[
+m=\sum_{j\in J}\sum_{i\in I}\lambda_{ij}(e_if_j),
+\]
+ce qui montre que la famille engendre $M$.
+
+L'indépendance linéaire se montre de manière analogue. Ainsi, $(e_if_j)_{(i,j)\in I\times J}$ est une base de $M$ sur $\mathbb{K}$.
+\end{proof}
+
+\begin{spacing}{1.4}
+\corollairesub{Multiplicité du degré}{
+Soit $k$ un sous-corps de $\mathbb{K}$ et soit $E$ un $\mathbb{K}$-espace vectoriel. Les conditions suivantes sont équivalentes :
+\begin{enumerate}
+\item $E$ est un $k$-espace vectoriel de dimension finie ;
+\item $E$ est un $\mathbb{K}$-espace vectoriel de dimension finie et $\mathbb{K}$ est un $k$-espace vectoriel de dimension finie.
+\end{enumerate}
+Dans ce cas,
+\[
+\dim_k E = \dim_{\mathbb{K}} E \cdot \dim_k \mathbb{K}.
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsubsub{Tour d'une extension de corps}{
+On appelle \textbf{tour d'extensions} toute suite finie de corps croissante pour l'inclusion. Si
+\[
+\mathbb{K}_1 \subseteq \mathbb{K}_2 \subseteq \cdots \subseteq \mathbb{K}_r,
+\]
+alors, pour tous $i\le j$, le corps $\mathbb{K}_j$ est une extension de $\mathbb{K}_i$.
+}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\mathbb{Q}\subseteq\mathbb{Q}$ ;
+\item $\mathbb{Q}\subset \mathbb{R}\subset \mathbb{C}$ ;
+\item $\mathbb{Q}\subseteq\mathbb{Q}(i)\subseteq\mathbb{Q}(i,\sqrt{2})\subseteq\mathbb{Q}(i,\sqrt{2},\sqrt{3})$.
+\end{itemize}
+
+\subsection{Sous-extension}
+\begin{spacing}{1.4}
+\definitionsub{}{Soient $\mathbb{K}$ un corps, $L$ un sous-corps de $\mathbb{K}$. On appelle \textbf{sous-extension} de $\mathbb{K}/L$ tout sous-corps $H$ de $\mathbb{K}$ tel que
+\[
+L\subseteq H\subseteq \mathbb{K}.
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\propositionsub{}{Soient $L$ un corps, $K$ un sous-corps de $L$, $P$ une partie de $L$. L'ensemble des sous-corps de $L$ qui contiennent $K$ et $P$ admet, au sens de l'inclusion, un plus petit élément. Ce plus petit élément est noté $K(P)$ et appelé la sous-extension de $L/K$ engendrée par $P$.}
+\end{spacing}
+
+\begin{proof}
+On considère
+\[
+S=\{F\subseteq L \mid K\subseteq F,\ P\subseteq F,\ F \text{ est un sous-corps de } L\}.
+\]
+Cet ensemble est non vide car $L\in S$. On pose
+\[
+K(P)=\bigcap_{F\in S}F.
+\]
+Une intersection de sous-corps est un sous-corps. De plus, $K\subseteq K(P)$ et $P\subseteq K(P)$, et par définition $K(P)$ est le plus petit sous-corps contenant $K$ et $P$.
+\end{proof}
+
+\begin{spacing}{1.4}
+\remarquesub{}{Lorsque $P=\{p_1,p_2,\dots,p_n\}$ est une partie finie de $L$, l'expression $K(P)$ s'écrit plus simplement
+\[
+K(p_1,p_2,\dots,p_n)
+\]
+\cite{EscofierGalois}.}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\propositionsub{}{Soient $L$ une extension d'un corps $K$ et $P,B$ deux parties de $L$. On a
+\[
+K(P\cup B)=K(P)(B).
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsub{Extension de type fini}{
+Soient $K$ un corps et $L$ une extension de $K$. On dit que l'extension $L/K$ est une \textbf{extension de type fini} s'il existe $x_1,x_2,\dots,x_n\in L$ tels que
+\[
+L=K(x_1,x_2,\dots,x_n).
+\]
+}
+\end{spacing}
+
+Exemples : $\mathbb{Q}(\sqrt{2})/\mathbb{Q}$, $\mathbb{Q}(\sqrt{2},\sqrt{3})/\mathbb{Q}$, $\mathbb{C}/\mathbb{R}$.
+
+\begin{spacing}{1.4}
+\remarquesub{}{Une extension de degré fini est de type fini. La réciproque est fausse.}
+\end{spacing}
+
+Exemple : $K(X)$ est de type fini sur $K$ et n'est pas de degré fini sur $K$.
+
+\begin{spacing}{1.4}
+\definitionsub{Extension homogène}{
+On dit que $L/K$ est une \textbf{extension homogène} si $L$ est engendré sur $K$ par un seul élément, c'est-à-dire s'il existe $x\in L$ tel que
+\[
+L=K(x).
+\]
+}
+\end{spacing}
+
+Exemple : $\mathbb{Q}(\sqrt{2})/\mathbb{Q}$.
+
+\section{Élément algébrique}
+\begin{spacing}{1.4}
+\definition{}{Soient $L/K$ une extension. Un élément $\alpha\in L$ est \textbf{algébrique} sur $K$ s'il existe $P(X)\in K[X]$ tel que
+\[
+P(\alpha)=0.
+\]
+}
+\end{spacing}
+
+Exemples : $\sqrt{2}$, $\sqrt[3]{2}$ et $\exp\!\left(\frac{2i\pi}{n}\right)$ sont des nombres complexes algébriques sur $\mathbb{Q}$.
+
+\begin{spacing}{1.4}
+\definition{Nombre transcendant}{
+Un nombre non algébrique sur $\mathbb{K}$ est dit \textbf{transcendant} sur $\mathbb{K}$.}
+\end{spacing}
+
+Exemples : $\pi$, $2^{\sqrt{2}}$ et $e$.
+
+\begin{spacing}{1.4}
+\definition{Polynôme minimal d'un élément algébrique}{
+Soit $\mathbb{K}$ un corps, $L$ une extension de $\mathbb{K}$ et $a\in L$ un élément algébrique sur $\mathbb{K}$. L'unique polynôme unitaire de $\mathbb{K}[X]$ de degré minimal s'annulant en $a$ est appelé \textbf{polynôme minimal} de $a$ sur $\mathbb{K}$.}
+\end{spacing}
+
+Exemple : $X^2-2$ est le polynôme minimal de $\sqrt{2}$ sur $\mathbb{Q}$.
+
+\begin{spacing}{1.4}
+\remarque{}{Le polynôme minimal d'un élément $a$ de $\mathbb{K}$ est $X-a$. Le polynôme minimal dépend du corps de base. Ainsi, $\sqrt[6]{2}$ a pour polynôme minimal $X^6-2$ sur $\mathbb{Q}$, mais $X^3-\sqrt{2}$ sur $\mathbb{Q}(\sqrt{2})$.}
+\end{spacing}
+
+\section{Extension algébrique}
+\begin{spacing}{1.4}
+\definition{Extension algébrique}{Soient $L/K$ une extension. On dit que cette extension est \textbf{algébrique} si tout élément de $L$ est algébrique sur $K$ \cite{AlgèbreI}.}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\mathbb{Q}(\sqrt{2})/\mathbb{Q}$ est une extension algébrique ;
+\item $\mathbb{Q}(i)/\mathbb{Q}$ est une extension algébrique ;
+\item $\mathbb{C}/\mathbb{R}$ est une extension algébrique.
+\end{itemize}
+
+\begin{spacing}{1.4}
+\definition{Extension transcendante}{
+Soient $L/K$ une extension. Si l'extension n'est pas algébrique, elle est dite \textbf{transcendante}.}
+\end{spacing}
+
+Exemple : $\mathbb{R}/\mathbb{Q}$ est une extension transcendante car $\pi$ et $e$ sont transcendants sur $\mathbb{Q}$.
+
+\section{Applications}
+Les extensions de corps ont de nombreuses applications en mathématiques, allant de la résolution des polynômes par radicaux et les groupes de Galois en théorie de Galois, à des domaines pratiques tels que la cryptographie, la théorie des nombres et la géométrie algébrique.
+
+\subsection{Théorie de Galois}
+La théorie de Galois est une branche de l'algèbre qui établit des relations entre les extensions de corps et la théorie des groupes. Elle permet de comprendre la structure des racines de polynômes et de déterminer quels polynômes peuvent être résolus par radicaux.
+
+\subsubsection{La résolution des polynômes par radicaux}
+Il est bien connu qu'un polynôme $f(x)$ du second degré, à coefficients dans $\mathbb{R}$, dont le discriminant est négatif, n'admet pas de racines dans $\mathbb{R}$ mais dans $\mathbb{C}$. Ainsi, pour résoudre une telle équation $f(x)=0$, il est nécessaire de considérer $\mathbb{C}$ comme une extension de $\mathbb{R}$.
+
+Exemple : considérons
+\[
+f(x)=5x^2+2x+1.
+\]
+Soit $\Delta$ le discriminant de l'équation $f(x)=0$ :
+\begin{align*}
+\Delta &= 2^2-4\cdot 5\cdot 1 \\
+&= 4-20 \\
+&= -16
+\end{align*}
+Puisque $\Delta<0$, le polynôme $f(x)$ n'admet pas de racine dans $\mathbb{R}$.
+
+Trouvons ses racines dans $\mathbb{C}$ :
+\begin{align*}
+\Delta &= -16 = 16i^2,\\
+\sqrt{\Delta} &= 4i.
+\end{align*}
+Les racines de $f(x)$ sont :
+\begin{align*}
+x_1 &= \frac{-2+4i}{10}=-\frac15+\frac25 i,\\
+x_2 &= \frac{-2-4i}{10}=-\frac15-\frac25 i.
+\end{align*}
+
+\subsubsection{Groupes de Galois}
+Les extensions de corps et les groupes de Galois ont des relations importantes, notamment entre le degré de l'extension et l'ordre du groupe de Galois, ou encore entre les corps intermédiaires d'une extension et les sous-groupes du groupe de Galois.
+
+Avant de parler des groupes, définissons d'abord la notion de $K$-automorphisme.
+
+\begin{spacing}{1.4}
+\definitionsub{}{Soient $E/K$ et $F/K$ des extensions.
+\begin{enumerate}
+\item On appelle $K$-\textbf{morphisme} de $E$ dans $F$ un morphisme de corps $f:E\to F$ qui prolonge l'identité de $K$, c'est-à-dire
+\[
+\forall k\in K \qquad f(k)=k.
+\]
+\item Un $K$-\textbf{morphisme} bijectif est un $K$-\textbf{isomorphisme}.
+\item Un $K$-\textbf{morphisme} de $E$ dans lui-même est un $K$-\textbf{endomorphisme}.
+\item Un $K$-\textbf{endomorphisme} bijectif est un $K$-\textbf{automorphisme}.
+\end{enumerate}
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsub{Groupe de Galois}{
+Soit $L/K$ une extension finie. Le \textbf{groupe de Galois} de $L/K$ est l'ensemble des $K$-automorphismes du corps $L$.
+}
+\end{spacing}
+
+Ce groupe est noté $Gal(L/K)$.
+
+\begin{spacing}{1.4}
+\remarquesub{}{$Gal(L/K)$ est un groupe pour la composition des applications.}
+\end{spacing}
+
+\newpage
+\section{Conclusion}
+L'extension d'un corps est l'étude d'un corps par rapport à un autre corps qui le contient comme sous-corps. Elle permet de comprendre comment les structures algébriques et les propriétés d'un corps peuvent être étendues et modifiées lorsqu'elles sont contenues dans un autre corps plus grand. Elle permet aussi de trouver les racines d'un polynôme dans un corps plus grand lorsque ce polynôme n'admet pas de racines dans le corps de base.
+
+\newpage
+\section{Annexe}
+Voici quelques détails supplémentaires intéressants.
+
+\begin{spacing}{1.4}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition - Loi de composition interne]
+Soit $E$ un ensemble non vide. On appelle \textbf{loi de composition interne} (lci) toute application de $E\times E$ dans $E$.
+\end{tcolorbox}
+\end{spacing}
+
+\textbf{Remarque}
+\begin{enumerate}
+\item si $*$ est une lci ($*:E\times E\to E$), alors pour tout $(x,y)\in E\times E$, l'image de $(x,y)$ par $*$ est notée $x*y$ ;
+\item si on utilise le symbole $+$, on dit que la loi est notée additivement ;
+\item si on utilise le symbole $\cdot$, on dit que la loi est notée multiplicativement ;
+\item on appelle \textbf{magma} tout couple $(E,*)$ constitué d'un ensemble $E$ non vide et d'une loi de composition interne $*$.
+\end{enumerate}
+
+\textbf{Exemples}
+\begin{enumerate}
+\item L'addition et la multiplication sont des lois de composition internes sur $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$ ;
+\item l'addition des matrices est une loi de composition interne sur $M_{n,p}(\mathbb{R})$ et le produit matriciel est une loi de composition interne sur $M_n(\mathbb{R})$ ;
+\item si $X$ est un ensemble, alors la réunion et l'intersection sont des lois de composition internes sur $\mathcal{P}(X)$.
+\end{enumerate}
+
+\begin{spacing}{1.4}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Loi stable et loi induite]
+Soit $(E,*)$ un magma et $A$ une partie de $E$. On dit que $A$ est \textbf{stable pour la loi $*$} si
+\[
+\forall (x,y)\in A\times A,\qquad x*y\in A.
+\]
+Si $A$ est stable pour la loi $*$, alors l'application
+\[
+\begin{array}{ccccc}
+*_A & : & A\times A & \to & A\\
+& & (x,y) & \mapsto & x*y
+\end{array}
+\]
+est une loi de composition interne sur $A$, appelée \textbf{loi induite} par $*$ sur $A$.
+\end{tcolorbox}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition - Éléments inverses d'un anneau]
+Soit $a$ un élément de l'anneau $(A,+,\times)$. On dit que $a$ est inversible si $a$ admet un symétrique pour la loi $\times$, c'est-à-dire s'il existe $b\in A$ tel que
+\[
+a\times b = b\times a = 1_A.
+\]
+\end{tcolorbox}
+\end{spacing}
+
+\newpage
+\section{Bibliographie}
+\printbibliography
+
+\end{document}
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tcolorbox}
+\usepackage{setspace}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Bibliographie.bib}
+
+% Redéfinition des commandes de sectionnement pour les sections
+\newcounter{defcount}[section]
+\renewcommand{\thedefcount}{\thesection.\arabic{defcount}}
+
+\newcounter{propcount}[section]
+\renewcommand{\thepropcount}{\thesection.\arabic{propcount}}
+
+\newcounter{remcount}[section]
+\renewcommand{\theremcount}{\thesection.\arabic{remcount}}
+
+\newcounter{corcount}[section]
+\renewcommand{\thecorcount}{\thesection.\arabic{corcount}}
+
+% Commandes pour les sections
+\newcommand{\definition}[2]{%
+\refstepcounter{defcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition \thedefcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Définition \thedefcount. #1}
+\ignorespaces}
+
+\newcommand{\proposition}[2]{%
+\refstepcounter{propcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Proposition \thepropcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Proposition \thepropcount. #1}
+\ignorespaces}
+
+\newcommand{\remarque}[2]{%
+\refstepcounter{remcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Remarque \theremcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Remarque \theremcount. #1}
+\ignorespaces}
+
+\newcommand{\corollaire}[2]{%
+\refstepcounter{corcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Corollaire \thecorcount\ - #1]
+#2
+\end{tcolorbox}
+\addcontentsline{toc}{subsection}{Corollaire \thecorcount. #1}
+\ignorespaces}
+
+% Sous-sections
+\newcounter{defcountsub}[subsection]
+\renewcommand{\thedefcountsub}{\thesubsection.\arabic{defcountsub}}
+
+\newcounter{propcountsub}[subsection]
+\renewcommand{\thepropcountsub}{\thesubsection.\arabic{propcountsub}}
+
+\newcounter{remsubcount}[subsection]
+\renewcommand{\theremsubcount}{\thesubsection.\arabic{remsubcount}}
+
+\newcounter{corsubcount}[subsection]
+\renewcommand{\thecorsubcount}{\thesubsection.\arabic{corsubcount}}
+
+\newcommand{\definitionsub}[2]{%
+\refstepcounter{defcountsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition \thedefcountsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\propositionsub}[2]{%
+\refstepcounter{propcountsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Proposition \thepropcountsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\remarquesub}[2]{%
+\refstepcounter{remsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Remarque \theremsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\corollairesub}[2]{%
+\refstepcounter{corsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Corollaire \thecorsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+% Sous-sous-sections
+\newcounter{defcountsubsub}[subsubsection]
+\renewcommand{\thedefcountsubsub}{\thesubsubsection.\arabic{defcountsubsub}}
+
+\newcounter{propcountsubsub}[subsubsection]
+\renewcommand{\thepropcountsubsub}{\thesubsubsection.\arabic{propcountsubsub}}
+
+\newcounter{remsubsubcount}[subsubsection]
+\renewcommand{\theremsubsubcount}{\thesubsubsection.\arabic{remsubsubcount}}
+
+\newcounter{corsubsubcount}[subsubsection]
+\renewcommand{\thecorsubsubcount}{\thesubsubsection.\arabic{corsubsubcount}}
+
+\newcommand{\definitionsubsub}[2]{%
+\refstepcounter{defcountsubsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition \thedefcountsubsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\propositionsubsub}[2]{%
+\refstepcounter{propcountsubsub}\par\medskip\noindent
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Proposition \thepropcountsubsub\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\remarquesubsub}[2]{%
+\refstepcounter{remsubsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Remarque \theremsubsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+\newcommand{\corollairesubsub}[2]{%
+\refstepcounter{corsubsubcount}\par\medskip\noindent
+\begin{tcolorbox}[colframe=green!75!black,colback=green!5!white,title=Corollaire \thecorsubsubcount\ - #1]
+#2
+\end{tcolorbox}
+\ignorespaces}
+
+% Titre
+\newcommand{\titre}{Extensions de corps}
+\newcommand{\auteurs}{Ibrahima Sory Camara et Mustapha Abdel-Wahid}
+\newcommand{\cours}{L2 Mathématiques 2023-2024}
+\newcommand{\universite}{Université Le Havre Normandie}
+\newcommand{\ndate}{Mai 2023}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{logo_universite_le_havre.jpg}
+\vfill
+
+\Huge
+\textbf{\titre}
+\vfill
+
+\large
+\textbf{\auteurs}
+
+\vspace{0.7cm}
+
+\large
+\textsc{\cours}
+
+\large
+\textsc{\universite}
+
+\Large
+\ndate
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\begin{abstract}
+A field extension is the addition of new elements to an existing field to form a larger field, allowing for the resolution of equations that are impossible to solve in the original field. Extensions can be finite or infinite, algebraic (where each new element is a root of a polynomial from the original field) or transcendental (where some elements are not roots of any polynomial). Field extensions are useful in several branches of mathematics.
+\end{abstract}
+
+\section{Introduction}
+L'extension de corps est un concept fondamental en mathématiques, notamment en algèbre. Elle porte sur l'étude d'un corps par rapport à un autre. Dans ce rapport nous retracerons l'évolution historique des extensions de corps, puis aborderons les structures algébriques en définissant quelques structures avant de fournir une définition précise de ce concept. Ensuite, nous énoncerons et prouverons certaines de ses propriétés, enfin nous mettrons en lumière quelques-uns de ses domaines d'application.
+
+\section{Histoire}
+L'histoire des extensions de corps en mathématiques est étroitement liée aux développements de la théorie des corps et de l'algèbre. Les travaux pionniers de mathématiciens comme Évariste Galois et Richard Dedekind ont été fondamentaux.
+
+Évariste Galois, au début du 19\textsuperscript{e} siècle, a jeté les bases de la théorie moderne des corps en introduisant des concepts clés sur les extensions de corps finies et leur relation avec les solutions des équations polynomiales. Ses travaux, bien que limités par sa mort prématurée, ont ouvert la voie à des développements majeurs dans la théorie des groupes et des corps \cite{GaloisTheory,ExtensionField}.
+
+Richard Dedekind a apporté des contributions cruciales en définissant rigoureusement les concepts d'extension de corps et de degré de l'extension. Il a également exploré les extensions infinies et les propriétés des extensions algébriques et transcendantes \cite{FieldMathematics}.
+
+Depuis ces contributions initiales, de nombreux mathématiciens ont enrichi la théorie des extensions de corps, explorant diverses formes d'extensions comme les extensions transcendantes, les extensions par adjonction et les extensions de corps multiples. Ces travaux ont établi les fondations de la théorie moderne des extensions de corps, qui a des applications importantes dans plusieurs domaines des mathématiques, notamment en algèbre, en géométrie et en théorie des nombres \cite{ExtensionField}.
+
+\begin{center}
+\vspace{1cm}
+\begin{minipage}[b]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Evariste_galois(1).jpg}
+\captionof{figure}{Évariste Galois (1811-1832)}
+\cite{Galois}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}[b]{0.3\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Richard_Dedekind_1900s.jpg}
+\captionof{figure}{Richard Dedekind (1831-1916)}
+\cite{Richard}
+\end{minipage}
+\end{center}
+
+\newpage
+\section{Structures algébriques}
+\begin{spacing}{1.4}
+Une structure algébrique est un ensemble muni d'une ou plusieurs lois ou opérations (dites internes et/ou externes), ces lois ou opérations satisfont certaines relations telles que l’associativité, la commutativité ou la distributivité.
+\end{spacing}
+
+\subsection{Quelques structures classiques}
+Voici quelques structures algébriques que nous devons comprendre pour la suite de ce rapport : les groupes, les anneaux, les corps et les espaces vectoriels.
+
+\subsubsection{Groupe}
+\begin{spacing}{1.4}
+\definitionsubsub{}{
+On appelle groupe tout ensemble $G$ non vide muni d'une loi de composition interne $*$ tel que :
+\begin{enumerate}
+\item la loi $*$ est associative :
+\[
+\forall x,y,z \in G \qquad (x*y)*z = x*(y*z)
+\]
+\item l'ensemble $G$ admet un élément neutre pour la loi $*$ :
+\[
+\exists e \in G \qquad \forall x \in G \qquad x*e = e*x = x
+\]
+\item tout élément de $G$ est symétrisable pour la loi $*$ :
+\[
+\forall x \in G \qquad \exists \bar{x} \in G \qquad x*\bar{x} = \bar{x}*x = e
+\]
+Si $(G,*)$ est un groupe tel que la loi $*$ soit commutative, c'est-à-dire :
+\[
+\forall x,y \in G \qquad x*y = y*x
+\]
+alors le groupe $(G,*)$ est dit \textbf{commutatif} ou encore \textbf{abélien}.
+\end{enumerate}
+}
+
+Exemples : $(\mathbb{Z},+)$, $(\mathbb{Q}^*,\times)$, $(\mathbb{C},+)$ et $(M_n(\mathbb{C}),+)$ sont des groupes.
+\end{spacing}
+
+\definitionsubsub{Sous-groupe}{
+Soit $G$ un groupe. On appelle \textbf{sous-groupe} de $G$ une partie $H$ de $G$ telle que :
+\begin{itemize}
+\item[$\triangleright$] $H$ est non vide ;
+\item[$\triangleright$] $H$ est stable pour la loi de composition interne :
+\[
+\forall x,y \in H \qquad xy \in H
+\]
+\item[$\triangleright$] $H$ est stable pour le passage à l'inverse :
+\[
+\forall x \in H \qquad x^{-1} \in H
+\]
+\end{itemize}
+}
+
+\subsubsection{Anneaux}
+\begin{spacing}{1.4}
+\definitionsubsub{}{Un \textbf{anneau} est un ensemble non vide $A$ muni de deux lois, dont la première est notée additivement et la seconde multiplicativement, tel que :
+\begin{enumerate}
+\item[$\triangleright$] $(A,+)$ est un groupe abélien ;
+\item[$\triangleright$] la loi $*$ est associative :
+\[
+\forall x,y,z \in A \qquad x*(y*z)=(x*y)*z
+\]
+\item[$\triangleright$] l'ensemble $A$ admet un élément neutre pour la loi $*$ :
+\[
+\exists e \in A \qquad \forall x \in A \qquad e*x = x*e = x
+\]
+($e$ est l'élément neutre ou élément unité pour la loi $*$, généralement noté $1_A$) ;
+\item[$\triangleright$] la loi $*$ est distributive par rapport à la loi $+$ :
+\[
+\forall x,y,z \in A \qquad (y+z)x = yx+zx \quad \text{et} \quad x(y+z)=xy+xz.
+\]
+\end{enumerate}
+Si la loi $*$ est commutative, alors $A$ est un anneau commutatif.}
+\end{spacing}
+
+Exemples : $(\mathbb{Z},+,\times)$, $(\mathbb{R},+,\times)$, $(\mathbb{Q},+,\times)$, $(\mathbb{C},+,\times)$ sont des anneaux.
+
+\begin{spacing}{1.4}
+\definitionsubsub{Sous-anneau}{Soient $(A,+,\times)$ un anneau et $B$ une partie de $A$. On dit que $B$ est un \textbf{sous-anneau} de $A$ si :
+\begin{enumerate}
+\item $B$ contient l'élément neutre de $A$ :
+\[
+1_A \in B
+\]
+\item $(B,+)$ est un sous-groupe de $(A,+)$, c'est-à-dire :
+\[
+\forall x,y \in B \qquad x-y \in B
+\]
+\item $B$ est stable pour la multiplication :
+\[
+\forall x,y \in B \qquad x\times y \in B
+\]
+\end{enumerate}
+}
+\end{spacing}
+
+Si $a$ admet un inverse dans $A$, alors celui-ci est unique et se note traditionnellement $a^{-1}$ ou $\bar{a}$. L'ensemble des éléments inversibles de $A$ est noté $A^\times$.
+
+Exemples :
+\[
+\mathbb{Z}^\times = \{-1,1\}, \qquad \mathbb{Q}^\times = \mathbb{Q}^*, \qquad \mathbb{R}^\times = \mathbb{R}^*, \qquad \mathbb{C}^\times = \mathbb{C}^*
+\]
+
+\subsubsection{Corps}
+\begin{spacing}{1.4}
+\definitionsubsub{}{Un \textbf{corps} est un \textbf{anneau} dans lequel tous les éléments non nuls sont \textbf{inversibles}. Si la deuxième loi est commutative, on dit que le corps est commutatif.}
+\end{spacing}
+
+Exemples : $(\mathbb{R},+,\times)$, $(\mathbb{Q},+,\times)$, $(\mathbb{C},+,\times)$ sont des corps.
+
+\begin{spacing}{1.4}
+\definitionsubsub{Sous-corps}{
+Soit $(\mathbb{K},\oplus,\odot)$ un corps et $L \subset \mathbb{K}$. On dit que $L$ est un \textbf{sous-corps} de $\mathbb{K}$ si :
+\begin{enumerate}
+\item[$\bullet$] $(L,+,\times)$ est un sous-anneau de $(\mathbb{K},\oplus,\odot)$ ;
+\item[$\bullet$] tous les éléments de $L$ sauf $0_L$ sont inversibles pour la loi induite $\times$.
+\end{enumerate}
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsubsub{Sous-corps engendré}{
+Soit $\mathbb{K}$ un corps et $S$ une partie de $\mathbb{K}$. L'ensemble des sous-corps de $\mathbb{K}$ contenant $S$ est non vide (car il contient $\mathbb{K}$), et donc l'intersection de tous ces sous-corps est un sous-corps de $\mathbb{K}$. C'est le plus petit sous-corps contenant $S$ ; on l'appelle \textbf{sous-corps engendré par $S$} \cite{AlgèbreI}.
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsubsub{Homomorphisme de corps}{
+Soient $(\mathbb{K},+, \cdot)$ et $(L, \oplus, \odot)$ deux corps. Une application $f:\mathbb{K} \rightarrow L$ est un homomorphisme de corps si elle satisfait les propriétés suivantes :
+\begin{enumerate}
+\item conservation de l'addition :
+\[
+f(a+b)=f(a)\oplus f(b)
+\]
+\item conservation de la multiplication :
+\[
+f(a\cdot b)=f(a)\odot f(b)
+\]
+\item conservation de l'élément neutre additif :
+\[
+f(0_{\mathbb{K}})=0_L
+\]
+\item conservation de l'élément neutre multiplicatif :
+\[
+f(1_{\mathbb{K}})=1_L
+\]
+\end{enumerate}
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\remarquesub{}{Plus généralement, un \textbf{homomorphisme} de corps est nécessairement \textbf{injectif}. Si $x\neq 0$, $x$ a un inverse $x^{-1}$, donc $j(x)j(x^{-1})=j(xx^{-1})=j(1)=1$. Un \textbf{automorphisme} de corps $\mathbb{K}$ est un homomorphisme de corps de $\mathbb{K}$ dans $\mathbb{K}$ qui est bijectif.}
+\end{spacing}
+
+\subsubsection{Espace vectoriel}
+\begin{spacing}{1.4}
+\definitionsubsub{}{Soient $(E,+)$ un groupe abélien et $(\mathbb{K},+,\times)$ un corps commutatif. On dit que $E$ est un $\mathbb{K}$-espace vectoriel s'il existe une application
+\[
+\begin{array}{ccccc}
+\mathbb{K}\times E & \to & E\\
+(\alpha,x) & \mapsto & \alpha x
+\end{array}
+\]
+vérifiant les axiomes suivants :
+\begin{enumerate}
+\item
+\[
+1_{\mathbb{K}}x = x
+\]
+\item
+\[
+\forall x \in E,\ \forall \lambda,\alpha \in \mathbb{K}\qquad (\alpha+\lambda)x=\alpha x+\lambda x
+\]
+\item
+\[
+\forall \alpha,\lambda \in \mathbb{K},\ \forall x \in E \qquad (\alpha\lambda)x=\alpha(\lambda x)
+\]
+\item
+\[
+\forall \alpha \in \mathbb{K},\ \forall x,y \in E \qquad \alpha(x+y)=\alpha x+\alpha y
+\]
+\end{enumerate}}
+\end{spacing}
+
+\newpage
+\section{Extension de corps}
+
+\subsection{Généralités}
+\begin{spacing}{1.4}
+\definitionsub{}{Soit $k$ un corps. On appelle extension de $k$ tout corps $\mathbb{K}$ tel qu'il existe un homomorphisme de corps, noté $j$, du corps $k$ dans $\mathbb{K}$.}
+\end{spacing}
+
+La notation $\mathbb{K}/k$ signifie que le corps $\mathbb{K}$ est une extension du corps $k$.
+
+\begin{spacing}{1.4}
+\propositionsub{}{Si $k$ est un sous-corps de $\mathbb{K}$, alors $\mathbb{K}$ est une extension de $k$.}
+\end{spacing}
+
+\begin{proof}
+Supposons que $k$ est un sous-corps de $\mathbb{K}$. Montrons que $\mathbb{K}$ est une extension du corps $k$.
+
+Soit $j:k\to\mathbb{K}$ définie par $j(x)=x$. Alors $j$ est un homomorphisme de corps. Ainsi, $\mathbb{K}$ est une extension de $k$.
+\end{proof}
+
+\begin{spacing}{1.4}
+\remarquesub{}{Réciproquement, un homomorphisme de corps $j:k\to \mathbb{K}$ est forcément injectif. Par conséquent le sous-corps $j(k)$ de $\mathbb{K}$ est isomorphe à $k$. En identifiant $k$ et $j(k)$, on peut dire que $k$ est un sous-corps de $\mathbb{K}$.}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\mathbb{C}$ est une extension de $\mathbb{R}$ ;
+\item $\mathbb{R}$ est une extension de $\mathbb{Q}$ ;
+\item $\mathbb{Q}(\sqrt{2})=\{a+b\sqrt{2}\mid a,b\in\mathbb{Q}\}$ est une extension de $\mathbb{Q}$ ;
+\item le corps $\mathbb{K}(X)$ des fractions rationnelles à coefficients dans $\mathbb{K}$ est une extension de $\mathbb{K}$.
+\end{itemize}
+
+\subsection{Visualisation}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[fill=green!30] (2,0) ellipse(3.5 and 1.5) node[align=center, xshift=4cm] {$\mathbb{C}$};
+\draw[fill=red!30] (1.4,0) ellipse (2.6 and 1) node[align=center, xshift=2.8cm] {$\mathbb{R}$};
+\draw[fill=blue!30] (1,0) ellipse (2 and 0.7) node {$\mathbb{Q}$};
+\end{tikzpicture}
+\end{center}
+
+$\mathbb{C}$ est une extension de $\mathbb{R}$ notée $\mathbb{C}/\mathbb{R}$.
+
+$\mathbb{R}$ est une extension de $\mathbb{Q}$ notée $\mathbb{R}/\mathbb{Q}$.
+
+Et on dira aussi que $\mathbb{R}$ est une extension intermédiaire de $\mathbb{C}/\mathbb{Q}$.
+
+\begin{spacing}{1.4}
+\propositionsub{}{Une extension $L/K$ est naturellement munie d'une structure de $K$-espace vectoriel.}
+\end{spacing}
+
+\begin{proof}
+Soient $(K,+,\cdot)$ un corps commutatif et $(L,\oplus,\odot)$ une extension de $K$, où $L$ est un corps contenant $K$.
+
+Définissons la loi externe sur $L$ par
+\[
+\forall \alpha\in K,\ \forall x\in L,\qquad \alpha\odot x=\alpha\cdot x.
+\]
+
+Il suffit alors de vérifier les axiomes d'un espace vectoriel, ce qui découle directement des propriétés du corps $L$.
+\end{proof}
+
+\subsection{Degré d'extension}
+\begin{spacing}{1.4}
+\propositionsub{Dimension}{La dimension est un invariant associé à tout espace vectoriel $E$ sur un corps $\mathbb{K}$. La dimension de $E$ est le cardinal commun à toutes ses bases. Ce nombre est noté $\dim_{\mathbb{K}}(E)$ ou $\dim(E)$ s'il n'y a pas d'ambiguïté.}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\dim_{\mathbb{R}}(\mathbb{R}^n)=n$ ;
+\item $\dim_{\mathbb{R}}(\mathbb{C})=2$, avec base $(1,i)$.
+\end{itemize}
+
+\begin{spacing}{1.4}
+\definitionsub{}{Soit $E$ une extension d'un corps $\mathbb{K}$. On appelle \textbf{degré d'extension} la dimension de $E$ comme $\mathbb{K}$-espace vectoriel. Si $\dim_{\mathbb{K}}E=+\infty$, on dit que $E$ est une extension de degré infini de $\mathbb{K}$. Si cette dimension est finie, on note
+\[
+[E:\mathbb{K}] = \dim_{\mathbb{K}}E.
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\propositionsub{}{Soit $\mathbb{K}$ une extension d'un corps $k$. On a
+\[
+[\mathbb{K}:k]=1 \iff k=\mathbb{K}.
+\]}
+\end{spacing}
+
+\begin{proof}
+Si $[\mathbb{K}:k]=1$, alors $\mathbb{K}$ admet une base à un seul élément sur $k$, donc tout élément de $\mathbb{K}$ est de la forme $\lambda\cdot 1$ avec $\lambda\in k$. Ainsi $\mathbb{K}=k$.
+
+Réciproquement, si $\mathbb{K}=k$, alors évidemment $\dim_k(\mathbb{K})=1$.
+\end{proof}
+
+Exemples :
+\begin{enumerate}
+\item Si $E/K$ est une extension telle que $[E:K]=1$, alors $E=K$ ;
+\item $[\mathbb{C}:\mathbb{R}]=2$ ;
+\item $\mathbb{R}/\mathbb{Q}$ est une extension infinie.
+\end{enumerate}
+
+\begin{spacing}{1.4}
+\propositionsub{Théorème de la base télescopique}{
+Soient $M/L$ et $L/\mathbb{K}$ deux extensions finies. Si $(e_i)_{i\in I}$ est une base de $L$ sur $\mathbb{K}$ et $(f_j)_{j\in J}$ une base de $M$ sur $L$, alors $(e_if_j)_{(i,j)\in I\times J}$ est une base de $M$ sur $\mathbb{K}$.
+
+En particulier,
+\[
+[M:\mathbb{K}] = [M:L]\,[L:\mathbb{K}].
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\begin{tikzpicture}[scale=1.5]
+\draw[fill=red!30] (2,0) ellipse(3.5 and 1.5) node[align=center, xshift=4cm] {$M$};
+\draw[fill=yellow!50] (1.4,0) ellipse (2.6 and 1) node[align=center, xshift=2.8cm] {$L$};
+\draw[fill=blue!50] (1,0) ellipse (2 and 0.7) node {$\mathbb{K}$};
+\end{tikzpicture}
+\end{spacing}
+
+\begin{proof}
+Soit $m\in M$. Comme $(f_j)$ est une base de $M$ sur $L$, on peut écrire
+\[
+m=\sum_{j\in J}\alpha_jf_j
+\]
+avec $\alpha_j\in L$. Comme $(e_i)$ est une base de $L$ sur $\mathbb{K}$, chaque $\alpha_j$ s'écrit
+\[
+\alpha_j=\sum_{i\in I}\lambda_{ij}e_i
+\]
+avec $\lambda_{ij}\in\mathbb{K}$. Donc
+\[
+m=\sum_{j\in J}\sum_{i\in I}\lambda_{ij}(e_if_j),
+\]
+ce qui montre que la famille engendre $M$.
+
+L'indépendance linéaire se montre de manière analogue. Ainsi, $(e_if_j)_{(i,j)\in I\times J}$ est une base de $M$ sur $\mathbb{K}$.
+\end{proof}
+
+\begin{spacing}{1.4}
+\corollairesub{Multiplicité du degré}{
+Soit $k$ un sous-corps de $\mathbb{K}$ et soit $E$ un $\mathbb{K}$-espace vectoriel. Les conditions suivantes sont équivalentes :
+\begin{enumerate}
+\item $E$ est un $k$-espace vectoriel de dimension finie ;
+\item $E$ est un $\mathbb{K}$-espace vectoriel de dimension finie et $\mathbb{K}$ est un $k$-espace vectoriel de dimension finie.
+\end{enumerate}
+Dans ce cas,
+\[
+\dim_k E = \dim_{\mathbb{K}} E \cdot \dim_k \mathbb{K}.
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsubsub{Tour d'une extension de corps}{
+On appelle \textbf{tour d'extensions} toute suite finie de corps croissante pour l'inclusion. Si
+\[
+\mathbb{K}_1 \subseteq \mathbb{K}_2 \subseteq \cdots \subseteq \mathbb{K}_r,
+\]
+alors, pour tous $i\le j$, le corps $\mathbb{K}_j$ est une extension de $\mathbb{K}_i$.
+}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\mathbb{Q}\subseteq\mathbb{Q}$ ;
+\item $\mathbb{Q}\subset \mathbb{R}\subset \mathbb{C}$ ;
+\item $\mathbb{Q}\subseteq\mathbb{Q}(i)\subseteq\mathbb{Q}(i,\sqrt{2})\subseteq\mathbb{Q}(i,\sqrt{2},\sqrt{3})$.
+\end{itemize}
+
+\subsection{Sous-extension}
+\begin{spacing}{1.4}
+\definitionsub{}{Soient $\mathbb{K}$ un corps, $L$ un sous-corps de $\mathbb{K}$. On appelle \textbf{sous-extension} de $\mathbb{K}/L$ tout sous-corps $H$ de $\mathbb{K}$ tel que
+\[
+L\subseteq H\subseteq \mathbb{K}.
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\propositionsub{}{Soient $L$ un corps, $K$ un sous-corps de $L$, $P$ une partie de $L$. L'ensemble des sous-corps de $L$ qui contiennent $K$ et $P$ admet, au sens de l'inclusion, un plus petit élément. Ce plus petit élément est noté $K(P)$ et appelé la sous-extension de $L/K$ engendrée par $P$.}
+\end{spacing}
+
+\begin{proof}
+On considère
+\[
+S=\{F\subseteq L \mid K\subseteq F,\ P\subseteq F,\ F \text{ est un sous-corps de } L\}.
+\]
+Cet ensemble est non vide car $L\in S$. On pose
+\[
+K(P)=\bigcap_{F\in S}F.
+\]
+Une intersection de sous-corps est un sous-corps. De plus, $K\subseteq K(P)$ et $P\subseteq K(P)$, et par définition $K(P)$ est le plus petit sous-corps contenant $K$ et $P$.
+\end{proof}
+
+\begin{spacing}{1.4}
+\remarquesub{}{Lorsque $P=\{p_1,p_2,\dots,p_n\}$ est une partie finie de $L$, l'expression $K(P)$ s'écrit plus simplement
+\[
+K(p_1,p_2,\dots,p_n)
+\]
+\cite{EscofierGalois}.}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\propositionsub{}{Soient $L$ une extension d'un corps $K$ et $P,B$ deux parties de $L$. On a
+\[
+K(P\cup B)=K(P)(B).
+\]
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsub{Extension de type fini}{
+Soient $K$ un corps et $L$ une extension de $K$. On dit que l'extension $L/K$ est une \textbf{extension de type fini} s'il existe $x_1,x_2,\dots,x_n\in L$ tels que
+\[
+L=K(x_1,x_2,\dots,x_n).
+\]
+}
+\end{spacing}
+
+Exemples : $\mathbb{Q}(\sqrt{2})/\mathbb{Q}$, $\mathbb{Q}(\sqrt{2},\sqrt{3})/\mathbb{Q}$, $\mathbb{C}/\mathbb{R}$.
+
+\begin{spacing}{1.4}
+\remarquesub{}{Une extension de degré fini est de type fini. La réciproque est fausse.}
+\end{spacing}
+
+Exemple : $K(X)$ est de type fini sur $K$ et n'est pas de degré fini sur $K$.
+
+\begin{spacing}{1.4}
+\definitionsub{Extension homogène}{
+On dit que $L/K$ est une \textbf{extension homogène} si $L$ est engendré sur $K$ par un seul élément, c'est-à-dire s'il existe $x\in L$ tel que
+\[
+L=K(x).
+\]
+}
+\end{spacing}
+
+Exemple : $\mathbb{Q}(\sqrt{2})/\mathbb{Q}$.
+
+\section{Élément algébrique}
+\begin{spacing}{1.4}
+\definition{}{Soient $L/K$ une extension. Un élément $\alpha\in L$ est \textbf{algébrique} sur $K$ s'il existe $P(X)\in K[X]$ tel que
+\[
+P(\alpha)=0.
+\]
+}
+\end{spacing}
+
+Exemples : $\sqrt{2}$, $\sqrt[3]{2}$ et $\exp\!\left(\frac{2i\pi}{n}\right)$ sont des nombres complexes algébriques sur $\mathbb{Q}$.
+
+\begin{spacing}{1.4}
+\definition{Nombre transcendant}{
+Un nombre non algébrique sur $\mathbb{K}$ est dit \textbf{transcendant} sur $\mathbb{K}$.}
+\end{spacing}
+
+Exemples : $\pi$, $2^{\sqrt{2}}$ et $e$.
+
+\begin{spacing}{1.4}
+\definition{Polynôme minimal d'un élément algébrique}{
+Soit $\mathbb{K}$ un corps, $L$ une extension de $\mathbb{K}$ et $a\in L$ un élément algébrique sur $\mathbb{K}$. L'unique polynôme unitaire de $\mathbb{K}[X]$ de degré minimal s'annulant en $a$ est appelé \textbf{polynôme minimal} de $a$ sur $\mathbb{K}$.}
+\end{spacing}
+
+Exemple : $X^2-2$ est le polynôme minimal de $\sqrt{2}$ sur $\mathbb{Q}$.
+
+\begin{spacing}{1.4}
+\remarque{}{Le polynôme minimal d'un élément $a$ de $\mathbb{K}$ est $X-a$. Le polynôme minimal dépend du corps de base. Ainsi, $\sqrt[6]{2}$ a pour polynôme minimal $X^6-2$ sur $\mathbb{Q}$, mais $X^3-\sqrt{2}$ sur $\mathbb{Q}(\sqrt{2})$.}
+\end{spacing}
+
+\section{Extension algébrique}
+\begin{spacing}{1.4}
+\definition{Extension algébrique}{Soient $L/K$ une extension. On dit que cette extension est \textbf{algébrique} si tout élément de $L$ est algébrique sur $K$ \cite{AlgèbreI}.}
+\end{spacing}
+
+Exemples :
+\begin{itemize}
+\item $\mathbb{Q}(\sqrt{2})/\mathbb{Q}$ est une extension algébrique ;
+\item $\mathbb{Q}(i)/\mathbb{Q}$ est une extension algébrique ;
+\item $\mathbb{C}/\mathbb{R}$ est une extension algébrique.
+\end{itemize}
+
+\begin{spacing}{1.4}
+\definition{Extension transcendante}{
+Soient $L/K$ une extension. Si l'extension n'est pas algébrique, elle est dite \textbf{transcendante}.}
+\end{spacing}
+
+Exemple : $\mathbb{R}/\mathbb{Q}$ est une extension transcendante car $\pi$ et $e$ sont transcendants sur $\mathbb{Q}$.
+
+\section{Applications}
+Les extensions de corps ont de nombreuses applications en mathématiques, allant de la résolution des polynômes par radicaux et les groupes de Galois en théorie de Galois, à des domaines pratiques tels que la cryptographie, la théorie des nombres et la géométrie algébrique.
+
+\subsection{Théorie de Galois}
+La théorie de Galois est une branche de l'algèbre qui établit des relations entre les extensions de corps et la théorie des groupes. Elle permet de comprendre la structure des racines de polynômes et de déterminer quels polynômes peuvent être résolus par radicaux.
+
+\subsubsection{La résolution des polynômes par radicaux}
+Il est bien connu qu'un polynôme $f(x)$ du second degré, à coefficients dans $\mathbb{R}$, dont le discriminant est négatif, n'admet pas de racines dans $\mathbb{R}$ mais dans $\mathbb{C}$. Ainsi, pour résoudre une telle équation $f(x)=0$, il est nécessaire de considérer $\mathbb{C}$ comme une extension de $\mathbb{R}$.
+
+Exemple : considérons
+\[
+f(x)=5x^2+2x+1.
+\]
+Soit $\Delta$ le discriminant de l'équation $f(x)=0$ :
+\begin{align*}
+\Delta &= 2^2-4\cdot 5\cdot 1 \\
+&= 4-20 \\
+&= -16
+\end{align*}
+Puisque $\Delta<0$, le polynôme $f(x)$ n'admet pas de racine dans $\mathbb{R}$.
+
+Trouvons ses racines dans $\mathbb{C}$ :
+\begin{align*}
+\Delta &= -16 = 16i^2,\\
+\sqrt{\Delta} &= 4i.
+\end{align*}
+Les racines de $f(x)$ sont :
+\begin{align*}
+x_1 &= \frac{-2+4i}{10}=-\frac15+\frac25 i,\\
+x_2 &= \frac{-2-4i}{10}=-\frac15-\frac25 i.
+\end{align*}
+
+\subsubsection{Groupes de Galois}
+Les extensions de corps et les groupes de Galois ont des relations importantes, notamment entre le degré de l'extension et l'ordre du groupe de Galois, ou encore entre les corps intermédiaires d'une extension et les sous-groupes du groupe de Galois.
+
+Avant de parler des groupes, définissons d'abord la notion de $K$-automorphisme.
+
+\begin{spacing}{1.4}
+\definitionsub{}{Soient $E/K$ et $F/K$ des extensions.
+\begin{enumerate}
+\item On appelle $K$-\textbf{morphisme} de $E$ dans $F$ un morphisme de corps $f:E\to F$ qui prolonge l'identité de $K$, c'est-à-dire
+\[
+\forall k\in K \qquad f(k)=k.
+\]
+\item Un $K$-\textbf{morphisme} bijectif est un $K$-\textbf{isomorphisme}.
+\item Un $K$-\textbf{morphisme} de $E$ dans lui-même est un $K$-\textbf{endomorphisme}.
+\item Un $K$-\textbf{endomorphisme} bijectif est un $K$-\textbf{automorphisme}.
+\end{enumerate}
+}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\definitionsub{Groupe de Galois}{
+Soit $L/K$ une extension finie. Le \textbf{groupe de Galois} de $L/K$ est l'ensemble des $K$-automorphismes du corps $L$.
+}
+\end{spacing}
+
+Ce groupe est noté $Gal(L/K)$.
+
+\begin{spacing}{1.4}
+\remarquesub{}{$Gal(L/K)$ est un groupe pour la composition des applications.}
+\end{spacing}
+
+\newpage
+\section{Conclusion}
+L'extension d'un corps est l'étude d'un corps par rapport à un autre corps qui le contient comme sous-corps. Elle permet de comprendre comment les structures algébriques et les propriétés d'un corps peuvent être étendues et modifiées lorsqu'elles sont contenues dans un autre corps plus grand. Elle permet aussi de trouver les racines d'un polynôme dans un corps plus grand lorsque ce polynôme n'admet pas de racines dans le corps de base.
+
+\newpage
+\section{Annexe}
+Voici quelques détails supplémentaires intéressants.
+
+\begin{spacing}{1.4}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition - Loi de composition interne]
+Soit $E$ un ensemble non vide. On appelle \textbf{loi de composition interne} (lci) toute application de $E\times E$ dans $E$.
+\end{tcolorbox}
+\end{spacing}
+
+\textbf{Remarque}
+\begin{enumerate}
+\item si $*$ est une lci ($*:E\times E\to E$), alors pour tout $(x,y)\in E\times E$, l'image de $(x,y)$ par $*$ est notée $x*y$ ;
+\item si on utilise le symbole $+$, on dit que la loi est notée additivement ;
+\item si on utilise le symbole $\cdot$, on dit que la loi est notée multiplicativement ;
+\item on appelle \textbf{magma} tout couple $(E,*)$ constitué d'un ensemble $E$ non vide et d'une loi de composition interne $*$.
+\end{enumerate}
+
+\textbf{Exemples}
+\begin{enumerate}
+\item L'addition et la multiplication sont des lois de composition internes sur $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$ ;
+\item l'addition des matrices est une loi de composition interne sur $M_{n,p}(\mathbb{R})$ et le produit matriciel est une loi de composition interne sur $M_n(\mathbb{R})$ ;
+\item si $X$ est un ensemble, alors la réunion et l'intersection sont des lois de composition internes sur $\mathcal{P}(X)$.
+\end{enumerate}
+
+\begin{spacing}{1.4}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Loi stable et loi induite]
+Soit $(E,*)$ un magma et $A$ une partie de $E$. On dit que $A$ est \textbf{stable pour la loi $*$} si
+\[
+\forall (x,y)\in A\times A,\qquad x*y\in A.
+\]
+Si $A$ est stable pour la loi $*$, alors l'application
+\[
+\begin{array}{ccccc}
+*_A & : & A\times A & \to & A\\
+& & (x,y) & \mapsto & x*y
+\end{array}
+\]
+est une loi de composition interne sur $A$, appelée \textbf{loi induite} par $*$ sur $A$.
+\end{tcolorbox}
+\end{spacing}
+
+\begin{spacing}{1.4}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Définition - Éléments inverses d'un anneau]
+Soit $a$ un élément de l'anneau $(A,+,\times)$. On dit que $a$ est inversible si $a$ admet un symétrique pour la loi $\times$, c'est-à-dire s'il existe $b\in A$ tel que
+\[
+a\times b = b\times a = 1_A.
+\]
+\end{tcolorbox}
+\end{spacing}
+
+\newpage
+\section{Bibliographie}
+\printbibliography
+
+\end{document}
