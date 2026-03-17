@@ -1,1 +1,488 @@
+\documentclass{article}
 
+\usepackage{tikz,tkz-tab}
+\usepackage{tcolorbox}
+\usepackage{setspace}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{lipsum}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{Bibliographie.bib}
+
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\coth}{coth}
+
+\newcommand{\dd}{\,\mathrm{d}}
+
+% Titre
+\newcommand{\titre}{Les fonctions hyperboliques et leurs réciproques}
+\newcommand{\auteurs}{Ibrahima Sory Camara, Honorat Axel, Marouard Pierre, Soton Marc-Antoine}
+\newcommand{\cours}{L1 Mathématiques 2022-2023}
+\newcommand{\universite}{Université Le Havre Normandie}
+\newcommand{\ndate}{Mai 2023}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{UFR.jpg}
+        \vfill
+
+        \Huge
+        \textbf{\titre}
+        \vfill
+
+        \large
+        \textbf{\auteurs}
+
+        \vspace{0.7cm}
+
+        \large
+        \textsc{\cours}
+
+        \large
+        \textsc{\universite}
+
+        \Large
+        \ndate
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\begin{abstract}
+The hyperbolic functions were first introduced by Vincenzo Ricatti in the 1760's.
+The hyperbolic functions are useful in many areas of mathematics, such as Analysis, solving differential equations and hyperbolic geometry. They present properties similar to the trigonometric functions, such as their parity, the sum and difference formulas, and their half-angle identities.
+\end{abstract}
+
+\section{Introduction}
+
+Les fonctions hyperboliques sont utilisées dans de nombreux domaines des mathématiques. Dans ce rapport, nous allons présenter leur histoire, les définir proprement, étudier leurs propriétés et enfin donner quelques applications.
+
+\section{Histoire}
+Les fonctions hyperboliques ont été inventées afin de pouvoir calculer l'aire sous une hyperbole. Nous devons leur introduction au mathématicien italien Vincenzo Ricatti et à son collègue Saladini dans les années 1760. L'hyperbole d'équation $x^2-y^2=1$ peut être paramétrée par les fonctions hyperboliques d'une manière analogue à celle du cercle $x^2+y^2=1$ par les fonctions trigonométriques. \cite{Hyperbole}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Hyperboliques.PNG}
+\end{center}
+
+Hormis Ricatti, Jean-Henri Lambert a fait une étude complète sur les fonctions hyperboliques une dizaine d'années après celle de son confrère.
+
+\section{Définitions}
+
+\begin{spacing}{1.4}
+
+\subsection{Partie paire et impaire}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Décomposition de fonctions]
+Soit $E$ un sous-ensemble symétrique de $\mathbb{R}$, c'est-à-dire que si $x \in E$ alors $-x \in E$.
+
+Soit $f:E\rightarrow \mathbb{R}$.
+
+Alors $f$ peut se décomposer de manière unique en somme de deux fonctions, l'une paire (notée $f_p$), l'autre impaire (notée $f_i$), c'est-à-dire :
+\[
+\forall x \in E,\quad f(x)=f_p(x)+f_i(x)
+\]
+où
+\[
+f_p(x)=\frac{f(x)+f(-x)}{2}
+\qquad
+f_i(x)=\frac{f(x)-f(-x)}{2}.
+\]
+\end{tcolorbox}
+
+\begin{proof}
+On a
+\[
+f_p(x)+f_i(x)
+=\frac{f(x)+f(-x)}{2}+\frac{f(x)-f(-x)}{2}
+=f(x).
+\]
+Étudions ensuite leur parité :
+\[
+f_p(-x)=\frac{f(-x)+f(x)}{2}=f_p(x),
+\]
+donc $f_p$ est paire, et
+\[
+f_i(-x)=\frac{f(-x)-f(x)}{2}=-\frac{f(x)-f(-x)}{2}=-f_i(x),
+\]
+donc $f_i$ est impaire.
+
+Prouvons maintenant l'unicité. Soient $p:E\to\mathbb{R}$ une fonction paire et $i:E\to\mathbb{R}$ une fonction impaire telles que
+\[
+\forall x\in E,\quad f(x)=p(x)+i(x).
+\]
+Alors
+\[
+\frac{f(x)+f(-x)}{2}
+=\frac{p(x)+i(x)+p(-x)+i(-x)}{2}
+=\frac{p(x)+i(x)+p(x)-i(x)}{2}
+=p(x),
+\]
+et de même
+\[
+\frac{f(x)-f(-x)}{2}
+=\frac{p(x)+i(x)-p(-x)-i(-x)}{2}
+=i(x).
+\]
+La décomposition est donc unique.
+\end{proof}
+
+Exemple :
+\[
+f(x)=\frac12 x^2+x.
+\]
+Alors
+\[
+f_p(x)=\frac{f(x)+f(-x)}{2}=\frac{x^2}{2},
+\qquad
+f_i(x)=\frac{f(x)-f(-x)}{2}=x.
+\]
+
+\subsection{Fonctions hyperboliques}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Fonctions hyperboliques]
+Soit $e^x : \mathbb{R} \rightarrow \mathbb{R}$ la fonction exponentielle.
+
+On définit $\sinh(x)$ comme la partie impaire de $e^x$ et $\cosh(x)$ comme la partie paire de $e^x$.
+
+Ainsi :
+\[
+\forall x\in \mathbb{R}, \quad
+\sinh(x)=\frac{e^x-e^{-x}}{2},
+\qquad
+\cosh(x)=\frac{e^x+e^{-x}}{2}.
+\]
+De plus,
+\[
+\tanh(x)=\frac{\sinh(x)}{\cosh(x)}.
+\]
+\end{tcolorbox}
+
+$\sinh(x)$ se lit sinus hyperbolique de $x$, $\cosh(x)$ se lit cosinus hyperbolique de $x$, et $\tanh(x)$ se lit tangente hyperbolique de $x$.
+
+\subsection{Fonctions réciproques hyperboliques}
+
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Théorème de la bijection]
+Soient $I$ un intervalle et $f : I \rightarrow \mathbb{R}$ une fonction continue et strictement monotone sur $I$.
+Alors $f$ est une bijection de l’intervalle $I$ sur l’intervalle $f(I)$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Fonction réciproque de $\sinh$]
+La fonction $\sinh$ réalise une bijection de $\mathbb{R}$ dans $\mathbb{R}$, de réciproque
+\[
+\forall y \in \mathbb{R},\quad
+\arcsinh(y)=\ln \left( y+\sqrt{y^2+1}\right).
+\]
+\end{tcolorbox}
+
+\begin{proof}
+On a
+\[
+(\sinh)'(x)=\frac{e^x+e^{-x}}{2}=\cosh(x)>0,
+\]
+donc $\sinh$ est strictement croissante sur $\mathbb{R}$, donc bijective de $\mathbb{R}$ sur son image. Comme
+\[
+\lim_{x\to -\infty}\sinh(x)=-\infty
+\qquad\text{et}\qquad
+\lim_{x\to +\infty}\sinh(x)=+\infty,
+\]
+son image est $\mathbb{R}$.
+
+Posons $\sinh(x)=y$. Alors
+\[
+y=\frac{e^x-e^{-x}}{2}
+\iff 2y=e^x-e^{-x}
+\iff 2ye^x=e^{2x}-1.
+\]
+En posant $u=e^x>0$, on obtient
+\[
+u^2-2yu-1=0.
+\]
+Donc
+\[
+u=y+\sqrt{y^2+1}
+\quad\text{ou}\quad
+u=y-\sqrt{y^2+1}.
+\]
+La seconde valeur est négative ou nulle, donc impossible puisque $u=e^x>0$. Ainsi
+\[
+e^x=y+\sqrt{y^2+1}
+\iff
+x=\ln\left(y+\sqrt{y^2+1}\right).
+\]
+\end{proof}
+
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Fonction réciproque de $\cosh$]
+La fonction $\cosh$ réalise une bijection de $\mathbb{R}_+$ dans $\left[1,+\infty\right[$, de réciproque
+\[
+\forall y \in \left[1,+\infty\right[,\quad
+\arccosh(y)=\ln \left( y+\sqrt{y^2-1}\right).
+\]
+\end{tcolorbox}
+
+\begin{proof}
+La fonction $\cosh$ est continue sur $\mathbb{R}$ et
+\[
+(\cosh)'(x)=\sinh(x).
+\]
+Ainsi, $\cosh$ est strictement croissante sur $\mathbb{R}_+$, et
+\[
+\cosh(0)=1,
+\qquad
+\lim_{x\to +\infty}\cosh(x)=+\infty.
+\]
+Donc $\cosh$ est bijective de $\mathbb{R}_+$ sur $\left[1,+\infty\right[$.
+
+Posons $y=\cosh(x)$ avec $x\ge 0$. Alors
+\[
+y=\frac{e^x+e^{-x}}{2}
+\iff 2ye^x=e^{2x}+1.
+\]
+En posant $u=e^x\ge 1$, on a
+\[
+u^2-2yu+1=0.
+\]
+Ainsi
+\[
+u=y+\sqrt{y^2-1}
+\quad\text{ou}\quad
+u=y-\sqrt{y^2-1}.
+\]
+Comme $u\ge 1$, on retient
+\[
+u=y+\sqrt{y^2-1},
+\]
+d'où
+\[
+x=\ln\left(y+\sqrt{y^2-1}\right).
+\]
+\end{proof}
+
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Fonction réciproque de $\tanh$]
+La fonction $\tanh$ réalise une bijection de $\mathbb{R}$ dans $\left]-1,1\right[$, de réciproque
+\[
+\forall y \in \left]-1,1\right[, \quad
+\arctanh(y)=\frac12 \ln\left(\frac{1+y}{1-y}\right).
+\]
+\end{tcolorbox}
+
+\begin{proof}
+On a
+\[
+\tanh(x)=\frac{\sinh(x)}{\cosh(x)},
+\qquad
+(\tanh)'(x)=\frac{1}{\cosh^2(x)}>0.
+\]
+Donc $\tanh$ est strictement croissante sur $\mathbb{R}$.
+De plus,
+\[
+\lim_{x\to -\infty}\tanh(x)=-1,
+\qquad
+\lim_{x\to +\infty}\tanh(x)=1.
+\]
+Ainsi $\tanh$ est une bijection de $\mathbb{R}$ sur $\left]-1,1\right[$.
+
+Posons $y=\tanh(x)$. Alors
+\[
+y=\frac{e^x-e^{-x}}{e^x+e^{-x}}
+\iff
+y(e^{2x}+1)=e^{2x}-1.
+\]
+Donc
+\[
+e^{2x}(1-y)=1+y
+\iff
+e^{2x}=\frac{1+y}{1-y}.
+\]
+Ainsi
+\[
+x=\frac12\ln\left(\frac{1+y}{1-y}\right).
+\]
+\end{proof}
+
+\subsection{Dérivée des fonctions réciproques}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Dérivée d'une bijection réciproque]
+Soit $f$ une fonction réelle réalisant une bijection de $E$ sur $F$ et dérivable sur $E$.
+Si
+\[
+\forall x \in F,\quad f'(f^{-1}(x))\neq0,
+\]
+alors
+\[
+(f^{-1})'(x)=\frac{1}{f'(f^{-1}(x))}.
+\]
+\end{tcolorbox}
+
+\subsection{Autres fonctions hyperboliques}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Remarque]
+On définit les fonctions $\coth$, $\sech$, $\csch$ de la manière suivante :
+\[
+\forall x \in \mathbb{R}^*, \quad
+\coth(x)=\frac{\cosh(x)}{\sinh(x)}=\frac{1}{\tanh(x)},
+\qquad
+\csch(x)=\frac{1}{\sinh(x)},
+\]
+\[
+\forall x \in \mathbb{R},\quad
+\sech(x)=\frac{1}{\cosh(x)}.
+\]
+\end{tcolorbox}
+
+\end{spacing}
+
+\section{Propriétés}
+
+\begin{spacing}{1.4}
+
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Propriétés fondamentales]
+Soit $x\in\mathbb{R}$. On a :
+\[
+\cosh(x)+\sinh(x)=e^x,
+\qquad
+\cosh(x)-\sinh(x)=e^{-x},
+\]
+\[
+\cosh^2(x)-\sinh^2(x)=1,
+\qquad
+1-\tanh^2(x)=\frac{1}{\cosh^2(x)}.
+\]
+\end{tcolorbox}
+
+\subsection{Formules d'addition et de soustraction}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Addition et soustraction]
+Soient $x,y\in\mathbb{R}$. On a :
+\[
+\sinh(x+y)=\sinh(x)\cosh(y)+\cosh(x)\sinh(y),
+\]
+\[
+\cosh(x+y)=\cosh(x)\cosh(y)+\sinh(x)\sinh(y),
+\]
+\[
+\cosh(x-y)=\cosh(x)\cosh(y)-\sinh(x)\sinh(y),
+\]
+\[
+\sinh(x-y)=\sinh(x)\cosh(y)-\cosh(x)\sinh(y),
+\]
+\[
+\tanh(x+y)=\frac{\tanh(x)+\tanh(y)}{1+\tanh(x)\tanh(y)},
+\]
+\[
+\tanh(x-y)=\frac{\tanh(x)-\tanh(y)}{1-\tanh(x)\tanh(y)}.
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Cas particulier]
+En posant $x=y$, on obtient :
+\[
+\sinh(2x)=2\sinh(x)\cosh(x),
+\]
+\[
+\cosh(2x)=\cosh^2(x)+\sinh^2(x),
+\]
+\[
+\tanh(2x)=\frac{2\tanh(x)}{1+\tanh^2(x)}.
+\]
+\end{tcolorbox}
+
+\subsection{Formules d'angle moitié}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Formules d'angle moitié]
+Soit $x\in\mathbb{R}$. On a :
+\[
+\cosh\left(\frac{x}{2}\right)=\sqrt{\frac{\cosh(x)+1}{2}},
+\]
+\[
+\sinh\left(\frac{x}{2}\right)=\sgn(x)\sqrt{\frac{\cosh(x)-1}{2}},
+\]
+\[
+\tanh\left(\frac{x}{2}\right)=\sgn(x)\sqrt{\frac{\cosh(x)-1}{\cosh(x)+1}}.
+\]
+\end{tcolorbox}
+
+\subsection{Formules de transition}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Formules trigonométriques-hyperboliques]
+Soit $i$ l'unité imaginaire et $x\in\mathbb{R}$. On a :
+\[
+\sinh(ix)=i\sin(x),
+\qquad
+\cosh(ix)=\cos(x),
+\qquad
+\tanh(ix)=i\tan(x),
+\]
+\[
+\sinh(x)=-i\sin(ix),
+\qquad
+\cosh(x)=\cos(ix),
+\qquad
+\tanh(x)=-i\tan(ix).
+\]
+\end{tcolorbox}
+
+\subsection{Dérivées}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Dérivées des fonctions hyperboliques]
+\[
+\forall x \in \mathbb{R},\quad
+(\sinh(x))' = \cosh(x),\quad
+(\cosh(x))' = \sinh(x),\quad
+(\tanh(x))' = \frac{1}{\cosh^2(x)}.
+\]
+\[
+\forall x \in \mathbb{R},\quad
+(\arcsinh(x))' = \frac{1}{\sqrt{x^2+1}}.
+\]
+\[
+\forall x \in \left]1,+\infty\right[,\quad
+(\arccosh(x))' = \frac{1}{\sqrt{x^2-1}}.
+\]
+\[
+\forall x \in \left]-1,1\right[,\quad
+(\arctanh(x))' = \frac{1}{1-x^2}.
+\]
+\end{tcolorbox}
+
+\subsection{Primitives}
+\begin{tcolorbox}[colframe=blue!75!black,colback=blue!5!white,title=Primitives des fonctions hyperboliques]
+Soient $C_1,\dots,C_6\in\mathbb{R}$. On a :
+\[
+\int \sinh(t)\,\dd t=\cosh(t)+C_1,
+\qquad
+\int \cosh(t)\,\dd t=\sinh(t)+C_2,
+\]
+\[
+\int \tanh(t)\,\dd t=\ln(\cosh(t))+C_3,
+\]
+\[
+\int \arcsinh(t)\,\dd t=t\arcsinh(t)-\sqrt{t^2+1}+C_4,
+\]
+\[
+\int \arccosh(t)\,\dd t=t\arccosh(t)-\sqrt{t^2-1}+C_5,
+\]
+\[
+\int \arctanh(t)\,\dd t=t\arctanh(t)+\frac12\ln(1-t^2)+C_6.
+\]
+\end{tcolorbox}
+
+\end{spacing}
+
+\section{Applications}
+Les fonctions hyperboliques sont principalement rencontrées en analyse, dans les calculs d'intégrales, la résolution d'équations différentielles et la géométrie hyperbolique.
+
+\section{Conclusion}
+Les fonctions hyperboliques peuvent être définies comme les parties paire et impaire de l'exponentielle. Elles présentent donc des propriétés très proches de celles des fonctions trigonométriques. Elles apparaissent dans de nombreux domaines comme la résolution d'équations différentielles, le calcul intégral et la géométrie hyperbolique.
+
+\section{Bibliographie}
+\printbibliography
+
+\end{document}
