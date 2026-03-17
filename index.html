@@ -416,7 +416,7 @@ footer {
   <span class="tag">Console</span>
 
   <p>Consulter le projet :</p>
-  <button class="btn" onclick="lancerDemoTrain()">Lancer la démo</button>
+  <button type="button" class="btn" onclick="lancerDemoTrain()">Lancer la démo</button>
   <a class="btn" href="./gestion-train/main.py" target="_blank">Voir le code Python</a>
   <a class="btn" href="./gestion-train/passager-train.csv" target="_blank">Voir le fichier CSV</a>
   <a class="btn" href="https://github.com/Ibscamara/Portfolio/tree/main/gestion-train" target="_blank">Voir le projet complet</a>
@@ -540,45 +540,122 @@ footer {
         
         </div>
         </div>
-    </div>
-<script>
-function lancerDemoTrain() {
-  document.getElementById("demo-train").style.display = "block";
-  afficherMenuTrain();
-}
-
-function afficherMenuTrain() {
-  let zone = document.getElementById("contenu-demo");
-
-  zone.innerHTML = `
-    <p><strong>Menu :</strong></p>
-    <button onclick="afficherTrains()">Afficher les trains</button>
-    <button onclick="ajouterTrain()">Ajouter un train</button>
-  `;
-}
-
-function afficherTrains() {
-  let zone = document.getElementById("contenu-demo");
-  zone.innerHTML = `
-    <p>Liste des trains (simulation)</p>
-    <button onclick="afficherMenuTrain()">Retour</button>
-  `;
-}
-
-function ajouterTrain() {
-  let nom = prompt("Nom du train :");
-
-  let zone = document.getElementById("contenu-demo");
-
-  zone.innerHTML = `
-    <p>Train ajouté : ${nom}</p>
-    <button onclick="afficherMenuTrain()">Retour</button>
-  `;
-}
-</script>
-    
+    </div>    
   </section>  <footer>
 <p>© 2026 Ibrahima Sory Camara - Portfolio personnel</p>
 </footer>
+
+<script>
+  const trainsDemo = [
+    {
+      date: "25-11-2022",
+      heure: "15h07",
+      numero: "TER001",
+      passagers: 347,
+      type: "Arrivée"
+    },
+    {
+      date: "26-11-2022",
+      heure: "15h07",
+      numero: "TER002",
+      passagers: 385,
+      type: "Départ"
+    }
+  ];
+
+  function lancerDemoTrain() {
+    const blocDemo = document.getElementById("demo-train");
+    const contenuDemo = document.getElementById("contenu-demo");
+
+    if (!blocDemo || !contenuDemo) {
+      alert("Erreur : la zone de démo n'existe pas dans la page.");
+      return;
+    }
+
+    blocDemo.style.display = "block";
+    afficherMenuTrain();
+  }
+
+  function afficherMenuTrain() {
+    const zone = document.getElementById("contenu-demo");
+
+    zone.innerHTML = `
+      <p><strong>Menu de démonstration</strong></p>
+      <button type="button" class="btn" onclick="afficherTrains()">Afficher les trains</button>
+      <button type="button" class="btn" onclick="ajouterTrain()">Ajouter un train</button>
+      <button type="button" class="btn" onclick="fermerDemoTrain()">Fermer la démo</button>
+    `;
+  }
+
+  function afficherTrains() {
+    const zone = document.getElementById("contenu-demo");
+
+    if (trainsDemo.length === 0) {
+      zone.innerHTML = `
+        <p>Aucun train enregistré.</p>
+        <button type="button" class="btn" onclick="afficherMenuTrain()">Retour au menu</button>
+      `;
+      return;
+    }
+
+    let html = `<p><strong>Liste des trains :</strong></p><ul>`;
+
+    for (const train of trainsDemo) {
+      html += `
+        <li>
+          ${train.date} | ${train.heure} | ${train.numero} |
+          ${train.passagers} passagers | ${train.type}
+        </li>
+      `;
+    }
+
+    html += `</ul>`;
+    html += `<button type="button" class="btn" onclick="afficherMenuTrain()">Retour au menu</button>`;
+
+    zone.innerHTML = html;
+  }
+
+  function ajouterTrain() {
+    const date = prompt("Entrez la date (jj-mm-aaaa) :");
+    if (date === null || date.trim() === "") return;
+
+    const heure = prompt("Entrez l'heure (ex: 15h07) :");
+    if (heure === null || heure.trim() === "") return;
+
+    const numero = prompt("Entrez le numéro du train :");
+    if (numero === null || numero.trim() === "") return;
+
+    const passagers = prompt("Entrez le nombre de passagers :");
+    if (passagers === null || passagers.trim() === "") return;
+
+    const type = prompt("Entrez le type du train : Arrivée ou Départ");
+    if (type === null || type.trim() === "") return;
+
+    trainsDemo.push({
+      date: date.trim(),
+      heure: heure.trim(),
+      numero: numero.trim(),
+      passagers: passagers.trim(),
+      type: type.trim()
+    });
+
+    const zone = document.getElementById("contenu-demo");
+
+    zone.innerHTML = `
+      <p><strong>Train ajouté avec succès :</strong></p>
+      <p>${date} | ${heure} | ${numero} | ${passagers} passagers | ${type}</p>
+      <button type="button" class="btn" onclick="afficherMenuTrain()">Retour au menu</button>
+    `;
+  }
+
+  function fermerDemoTrain() {
+    const blocDemo = document.getElementById("demo-train");
+    const zone = document.getElementById("contenu-demo");
+
+    zone.innerHTML = "";
+    blocDemo.style.display = "none";
+  }
+</script>
+  
 </body>  
 </html>
