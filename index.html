@@ -545,4 +545,41 @@ footer {
 <p>© 2026 Ibrahima Sory Camara - Portfolio personnel</p>
 </footer>
 </body>
+
+<script>
+function lancerDemoTrain() {
+  document.getElementById("demo-train").style.display = "block";
+  afficherMenuTrain();
+}
+
+function afficherMenuTrain() {
+  let zone = document.getElementById("contenu-demo");
+
+  zone.innerHTML = `
+    <p><strong>Menu :</strong></p>
+    <button onclick="afficherTrains()">Afficher les trains</button>
+    <button onclick="ajouterTrain()">Ajouter un train</button>
+  `;
+}
+
+function afficherTrains() {
+  let zone = document.getElementById("contenu-demo");
+  zone.innerHTML = `
+    <p>Liste des trains (simulation)</p>
+    <button onclick="afficherMenuTrain()">Retour</button>
+  `;
+}
+
+function ajouterTrain() {
+  let nom = prompt("Nom du train :");
+
+  let zone = document.getElementById("contenu-demo");
+
+  zone.innerHTML = `
+    <p>Train ajouté : ${nom}</p>
+    <button onclick="afficherMenuTrain()">Retour</button>
+  `;
+}
+</script>
+  
 </html>
