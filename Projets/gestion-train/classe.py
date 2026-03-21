@@ -30,7 +30,6 @@ class Train:
     def __str__(self) -> str:
         """
         Représentation lisible du train.
-        Utilisée directement par print() — plus idiomatique que afficher().
         """
         return (
             f"Date : {self.date} | Heure : {self.heure} | "
