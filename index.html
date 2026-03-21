@@ -1,39 +1,3 @@
-voici mon index.html de mon portfolio je veux que l'ameliore et tu me montre une aperçue pour que je vois
-18:11
-A consulté 3 fichiers
-Terminé
-
-J'ai bien lu ton code. Je vois plusieurs choses à améliorer : du CSS dupliqué, des balises mal fermées, des <h2> doubles, et un design qui peut être beaucoup plus professionnel. Laisse-moi te montrer une version améliorée !
-Fichier créé, lu un fichier
-
-Voici l'aperçu et le fichier amélioré ! Voici ce que j'ai changé :
-
-Corrections techniques :
-
-    CSS dupliqué supprimé (les styles profile-photo, btn, etc. étaient définis deux fois)
-    Balises mal fermées corrigées (<!a → commenté proprement)
-    Les deux <h2> doubles dans les projets fusionnés en un seul
-    Les deux id="projets" → séparés proprement en maths / informatique
-    La section certifications avait des noms de classes avec espaces (invalide)
-
-Améliorations visuelles :
-
-    Nouvelle typographie : Playfair Display pour les titres + DM Sans pour le corps
-    Fond avec grille de points subtile dans le hero
-    Photo de profil entourée d'un anneau dégradé bleu → or
-    Cartes de compétences avec hover animé
-    Cartes projets avec catégorie en or, hover avec élévation
-    Section contact plus lisible avec icônes
-    Navigation sticky avec logo "ISC"
-
-Pour l'utiliser, remplace simplement ton ancien index.html par ce fichier — toutes tes images et liens (photo.jpg, cover.jpg, les PDFs, etc.) fonctionnent à l'identique.
-Index
-Code · HTML 
-Souhaitez-vous être averti lorsque Claude répond ?
-
-
-Claude est une IA et peut faire des erreurs. Veuillez vérifier les réponses.
-Index · HTML
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -54,11 +18,11 @@ Index · HTML
       --muted:    #8da5c4;
       --radius:   16px;
     }
- 
+
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
- 
+
     html { scroll-behavior: smooth; }
- 
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -67,7 +31,7 @@ Index · HTML
       line-height: 1.7;
       overflow-x: hidden;
     }
- 
+
     /* ── NAV ───────────────────────────────────────────────── */
     nav {
       position: sticky;
@@ -82,16 +46,16 @@ Index · HTML
       justify-content: space-between;
       height: 60px;
     }
- 
+
     .nav-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       color: var(--accent2);
       letter-spacing: 0.02em;
     }
- 
+
     .nav-links { display: flex; gap: 32px; }
- 
+
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
@@ -101,9 +65,9 @@ Index · HTML
       text-transform: uppercase;
       transition: color 0.2s;
     }
- 
+
     .nav-links a:hover { color: var(--accent2); }
- 
+
     /* ── HERO ──────────────────────────────────────────────── */
     header {
       min-height: 100vh;
@@ -118,7 +82,7 @@ Index · HTML
       text-align: center;
       overflow: hidden;
     }
- 
+
     /* grid dots decoration */
     header::before {
       content: '';
@@ -128,14 +92,14 @@ Index · HTML
       background-size: 36px 36px;
       pointer-events: none;
     }
- 
+
     .hero-inner {
       position: relative;
       z-index: 1;
       max-width: 780px;
       margin: 0 auto;
     }
- 
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -151,7 +115,7 @@ Index · HTML
       margin-bottom: 32px;
       animation: fadeUp 0.7s ease both;
     }
- 
+
     .profile-ring {
       display: inline-block;
       width: 148px;
@@ -162,7 +126,7 @@ Index · HTML
       margin-bottom: 28px;
       animation: fadeUp 0.7s 0.1s ease both;
     }
- 
+
     .profile-photo {
       width: 100%;
       height: 100%;
@@ -171,7 +135,7 @@ Index · HTML
       display: block;
       background: var(--surface);
     }
- 
+
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 6vw, 4.2rem);
@@ -181,9 +145,9 @@ Index · HTML
       margin-bottom: 18px;
       animation: fadeUp 0.7s 0.2s ease both;
     }
- 
+
     header h1 span { color: var(--accent); }
- 
+
     .hero-sub {
       font-size: 1.05rem;
       color: var(--muted);
@@ -191,7 +155,7 @@ Index · HTML
       margin: 0 auto 36px;
       animation: fadeUp 0.7s 0.3s ease both;
     }
- 
+
     .hero-btns {
       display: flex;
       flex-wrap: wrap;
@@ -199,7 +163,7 @@ Index · HTML
       justify-content: center;
       animation: fadeUp 0.7s 0.4s ease both;
     }
- 
+
     /* ── BUTTONS ───────────────────────────────────────────── */
     .btn {
       display: inline-flex;
@@ -214,42 +178,42 @@ Index · HTML
       border: none;
       transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
- 
+
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), #3182ce);
       color: #fff;
       box-shadow: 0 6px 22px rgba(99,179,237,0.28);
     }
- 
+
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 28px rgba(99,179,237,0.38);
     }
- 
+
     .btn-ghost {
       background: rgba(255,255,255,0.06);
       color: var(--accent2);
       border: 1px solid rgba(99,179,237,0.22);
     }
- 
+
     .btn-ghost:hover {
       background: rgba(99,179,237,0.1);
       transform: translateY(-2px);
     }
- 
+
     .btn-sm {
       padding: 8px 16px;
       font-size: 0.82rem;
       border-radius: 8px;
     }
- 
+
     /* ── SECTIONS ──────────────────────────────────────────── */
     section {
       max-width: 1080px;
       margin: 0 auto;
       padding: 90px 24px;
     }
- 
+
     .section-label {
       font-size: 0.72rem;
       letter-spacing: 0.14em;
@@ -258,7 +222,7 @@ Index · HTML
       margin-bottom: 10px;
       font-weight: 600;
     }
- 
+
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 4vw, 2.6rem);
@@ -266,7 +230,7 @@ Index · HTML
       margin-bottom: 40px;
       line-height: 1.2;
     }
- 
+
     /* ── CARDS ─────────────────────────────────────────────── */
     .card {
       background: var(--surface);
@@ -275,23 +239,23 @@ Index · HTML
       padding: 28px 30px;
       transition: border-color 0.25s, box-shadow 0.25s;
     }
- 
+
     .card:hover {
       border-color: rgba(99,179,237,0.28);
       box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
- 
+
     /* ── À PROPOS ──────────────────────────────────────────── */
     #apropos .card p + p { margin-top: 14px; }
     #apropos .card p { color: var(--muted); font-size: 0.98rem; }
- 
+
     /* ── COMPÉTENCES ───────────────────────────────────────── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 14px;
     }
- 
+
     .skill-item {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -305,9 +269,9 @@ Index · HTML
       gap: 10px;
       transition: border-color 0.2s, transform 0.2s;
     }
- 
+
     .skill-item:hover { border-color: var(--accent); transform: translateY(-2px); }
- 
+
     .skill-dot {
       width: 8px;
       height: 8px;
@@ -315,14 +279,14 @@ Index · HTML
       background: var(--accent);
       flex-shrink: 0;
     }
- 
+
     .qualities-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 10px;
     }
- 
+
     .q-pill {
       padding: 8px 18px;
       border-radius: 999px;
@@ -332,14 +296,14 @@ Index · HTML
       background: var(--bg2);
       color: var(--muted);
     }
- 
+
     /* ── PROJETS ───────────────────────────────────────────── */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 22px;
     }
- 
+
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -350,13 +314,13 @@ Index · HTML
       gap: 14px;
       transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
     }
- 
+
     .project-card:hover {
       border-color: rgba(99,179,237,0.3);
       box-shadow: 0 16px 48px rgba(0,0,0,0.45);
       transform: translateY(-4px);
     }
- 
+
     .project-category {
       font-size: 0.7rem;
       letter-spacing: 0.1em;
@@ -364,18 +328,18 @@ Index · HTML
       color: var(--gold);
       font-weight: 600;
     }
- 
+
     .project-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       color: #fff;
       line-height: 1.4;
     }
- 
+
     .project-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
- 
+
     .tags { display: flex; flex-wrap: wrap; gap: 8px; }
- 
+
     .tag {
       padding: 5px 12px;
       border-radius: 999px;
@@ -385,16 +349,16 @@ Index · HTML
       border: 1px solid rgba(99,179,237,0.2);
       color: var(--accent2);
     }
- 
+
     .project-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
- 
+
     /* ── CERTIFICATIONS ────────────────────────────────────── */
     .certif-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 22px;
     }
- 
+
     .certif-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -405,12 +369,12 @@ Index · HTML
       gap: 14px;
       transition: border-color 0.25s, transform 0.25s;
     }
- 
+
     .certif-card:hover {
       border-color: rgba(246,201,14,0.3);
       transform: translateY(-3px);
     }
- 
+
     .certif-icon {
       width: 44px;
       height: 44px;
@@ -422,10 +386,10 @@ Index · HTML
       justify-content: center;
       font-size: 1.3rem;
     }
- 
+
     .certif-card h3 { font-size: 1rem; font-weight: 600; color: #fff; }
     .certif-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
- 
+
     /* ── DEMO TRAIN ────────────────────────────────────────── */
     #demo-train {
       display: none;
@@ -435,7 +399,7 @@ Index · HTML
       border-radius: 12px;
       padding: 24px;
     }
- 
+
     #demo-train ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
     #demo-train li {
       background: var(--surface);
@@ -445,14 +409,14 @@ Index · HTML
       font-size: 0.87rem;
       color: var(--muted);
     }
- 
+
     /* ── CONTACT ───────────────────────────────────────────── */
     .contact-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
     }
- 
+
     .contact-link {
       display: inline-flex;
       align-items: center;
@@ -467,15 +431,15 @@ Index · HTML
       font-weight: 500;
       transition: border-color 0.2s, transform 0.2s;
     }
- 
+
     .contact-link:hover {
       border-color: var(--accent);
       color: var(--accent2);
       transform: translateY(-2px);
     }
- 
+
     .contact-icon { font-size: 1.1rem; }
- 
+
     /* ── DIVIDER ───────────────────────────────────────────── */
     .section-divider {
       width: 48px;
@@ -484,7 +448,7 @@ Index · HTML
       border-radius: 999px;
       margin-bottom: 36px;
     }
- 
+
     /* ── FOOTER ────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -493,13 +457,13 @@ Index · HTML
       color: var(--muted);
       font-size: 0.85rem;
     }
- 
+
     /* ── ANIMATION ─────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
- 
+
     /* ── RESPONSIVE ────────────────────────────────────────── */
     @media (max-width: 680px) {
       nav { padding: 0 20px; }
@@ -507,14 +471,14 @@ Index · HTML
       .nav-links a { font-size: 0.8rem; }
       section { padding: 70px 18px; }
     }
- 
+
     @media (max-width: 480px) {
       .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
- 
+
 <!-- ════ NAV ════════════════════════════════════════════════ -->
 <nav>
   <span class="nav-logo">ISC</span>
@@ -527,7 +491,7 @@ Index · HTML
     <a href="#contacts">Contact</a>
   </div>
 </nav>
- 
+
 <!-- ════ HERO ═══════════════════════════════════════════════ -->
 <header id="accueil">
   <div class="hero-inner">
@@ -546,7 +510,7 @@ Index · HTML
     </div>
   </div>
 </header>
- 
+
 <!-- ════ À PROPOS ═══════════════════════════════════════════ -->
 <section id="apropos">
   <p class="section-label">Qui suis-je ?</p>
@@ -559,13 +523,13 @@ Index · HTML
     <p>Je m'intéresse à la programmation scientifique et maîtrise des bases en Python, R, Scilab et LaTeX, utilisés pour mes projets académiques et personnels.</p>
   </div>
 </section>
- 
+
 <!-- ════ COMPÉTENCES ════════════════════════════════════════ -->
 <section id="competences">
   <p class="section-label">Ce que je maîtrise</p>
   <h2>Compétences</h2>
   <div class="section-divider"></div>
- 
+
   <div class="skills-grid" style="margin-bottom: 40px;">
     <div class="skill-item"><span class="skill-dot"></span>Analyse mathématique</div>
     <div class="skill-item"><span class="skill-dot"></span>Algèbre</div>
@@ -579,7 +543,7 @@ Index · HTML
     <div class="skill-item"><span class="skill-dot"></span>Algorithmique</div>
     <div class="skill-item"><span class="skill-dot"></span>GitHub</div>
   </div>
- 
+
   <p class="section-label" style="margin-bottom: 16px;">Qualités</p>
   <div class="qualities-wrap">
     <span class="q-pill">Rigoureux</span>
@@ -590,17 +554,17 @@ Index · HTML
     <span class="q-pill">Savoir-être</span>
   </div>
 </section>
- 
+
 <!-- ════ PROJETS ════════════════════════════════════════════ -->
 <section id="projets">
   <p class="section-label">Ce que j'ai réalisé</p>
   <h2>Projets</h2>
   <div class="section-divider"></div>
- 
+
   <!-- Mathématiques -->
   <p class="section-label" style="margin-bottom: 20px;">📐 Mathématiques</p>
   <div class="projects-grid" style="margin-bottom: 50px;">
- 
+
     <div class="project-card">
       <span class="project-category">Analyse · 2022</span>
       <h3>Fonctions hyperboliques et applications</h3>
@@ -615,7 +579,7 @@ Index · HTML
         <a class="btn btn-ghost btn-sm" href="Projets/Fonction-hyperbolique/Fcts_hyperbolique.tex" target="_blank">Code LaTeX</a>
       </div>
     </div>
- 
+
     <div class="project-card">
       <span class="project-category">Analyse · 2025</span>
       <h3>Introduction à la théorie spectrale</h3>
@@ -630,7 +594,7 @@ Index · HTML
         <a class="btn btn-ghost btn-sm" href="Projets/NOM_DOSSIER/NOM_DU_FICHIER.pdf" target="_blank">PDF</a>
       </div>
     </div>
- 
+
     <div class="project-card">
       <span class="project-category">Algèbre · 2024</span>
       <h3>Extensions de corps et applications</h3>
@@ -644,13 +608,13 @@ Index · HTML
         <a class="btn btn-ghost btn-sm" href="Projets/ExtensionDeCorps/main.tex" target="_blank">Code LaTeX</a>
       </div>
     </div>
- 
+
   </div>
- 
+
   <!-- Informatique -->
   <p class="section-label" style="margin-bottom: 20px;">💻 Informatique & Data</p>
   <div class="projects-grid">
- 
+
     <div class="project-card">
       <span class="project-category">Python · Console</span>
       <h3>Gestion de trains en gare</h3>
@@ -670,7 +634,7 @@ Index · HTML
         <div id="contenu-demo"></div>
       </div>
     </div>
- 
+
     <div class="project-card">
       <span class="project-category">R · Statistiques</span>
       <h3>Analyse de la production de bauxite en Guinée</h3>
@@ -688,16 +652,16 @@ Index · HTML
         <a class="btn btn-ghost btn-sm" href="https://github.com/Ibscamara/Portfolio/tree/main/Projets/bauxite-guinee" target="_blank">GitHub</a>
       </div>
     </div>
- 
+
   </div>
 </section>
- 
+
 <!-- ════ CERTIFICATIONS ══════════════════════════════════════ -->
 <section id="certifications">
   <p class="section-label">Reconnaissance & Engagement</p>
   <h2>Certifications & Engagements</h2>
   <div class="section-divider"></div>
- 
+
   <div class="certif-grid">
     <div class="certif-card">
       <div class="certif-icon">🏅</div>
@@ -709,7 +673,7 @@ Index · HTML
       </div>
       <a class="btn btn-ghost btn-sm" href="EngagementsEtCertif/certification-pix-Ibrahiama.pdf" target="_blank">Voir l'attestation</a>
     </div>
- 
+
     <div class="certif-card">
       <div class="certif-icon">🤝</div>
       <h3>Engagement associatif – AGELH</h3>
@@ -722,7 +686,7 @@ Index · HTML
     </div>
   </div>
 </section>
- 
+
 <!-- ════ CONTACT ════════════════════════════════════════════ -->
 <section id="contacts">
   <p class="section-label">Échangeons</p>
@@ -743,24 +707,24 @@ Index · HTML
     </a>
   </div>
 </section>
- 
+
 <!-- ════ FOOTER ══════════════════════════════════════════════ -->
 <footer>
   <p>© 2025 Ibrahima Sory Camara · Portfolio académique · Le Havre, Normandie</p>
 </footer>
- 
+
 <!-- ════ SCRIPT DÉMO TRAIN ══════════════════════════════════ -->
 <script>
   const trainsDemo = [
     { date:"25-11-2022", heure:"15h07", numero:"TER001", passagers:347, type:"Arrivée" },
     { date:"26-11-2022", heure:"15h07", numero:"TER002", passagers:385, type:"Départ" }
   ];
- 
+
   function lancerDemoTrain() {
     document.getElementById("demo-train").style.display = "block";
     afficherMenuTrain();
   }
- 
+
   function afficherMenuTrain() {
     document.getElementById("contenu-demo").innerHTML = `
       <p style="color:var(--muted);margin-bottom:12px;">Choisissez une action :</p>
@@ -770,7 +734,7 @@ Index · HTML
         <button type="button" class="btn btn-sm" style="background:rgba(255,80,80,0.1);color:#fc8181;border:1px solid rgba(255,100,100,0.2);" onclick="fermerDemoTrain()">✕ Fermer</button>
       </div>`;
   }
- 
+
   function afficherTrains() {
     const zone = document.getElementById("contenu-demo");
     if (trainsDemo.length === 0) {
@@ -785,7 +749,7 @@ Index · HTML
     html += `</ul><button class="btn btn-ghost btn-sm" style="margin-top:12px;" onclick="afficherMenuTrain()">← Retour</button>`;
     zone.innerHTML = html;
   }
- 
+
   function ajouterTrain() {
     const date = prompt("Date (jj-mm-aaaa) :"); if (!date?.trim()) return;
     const heure = prompt("Heure (ex: 15h07) :"); if (!heure?.trim()) return;
@@ -797,12 +761,10 @@ Index · HTML
       <p style="color:#68d391;margin-bottom:12px;">✓ Train ajouté avec succès.</p>
       <button class="btn btn-ghost btn-sm" onclick="afficherMenuTrain()">← Retour</button>`;
   }
- 
+
   function fermerDemoTrain() {
     document.getElementById("demo-train").style.display = "none";
   }
 </script>
 </body>
 </html>
- 
-
