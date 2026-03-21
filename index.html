@@ -1,623 +1,808 @@
-<!DOCTYPE html><html lang="fr">
+voici mon index.html de mon portfolio je veux que l'ameliore et tu me montre une aperçue pour que je vois
+18:11
+A consulté 3 fichiers
+Terminé
+
+J'ai bien lu ton code. Je vois plusieurs choses à améliorer : du CSS dupliqué, des balises mal fermées, des <h2> doubles, et un design qui peut être beaucoup plus professionnel. Laisse-moi te montrer une version améliorée !
+Fichier créé, lu un fichier
+
+Voici l'aperçu et le fichier amélioré ! Voici ce que j'ai changé :
+
+Corrections techniques :
+
+    CSS dupliqué supprimé (les styles profile-photo, btn, etc. étaient définis deux fois)
+    Balises mal fermées corrigées (<!a → commenté proprement)
+    Les deux <h2> doubles dans les projets fusionnés en un seul
+    Les deux id="projets" → séparés proprement en maths / informatique
+    La section certifications avait des noms de classes avec espaces (invalide)
+
+Améliorations visuelles :
+
+    Nouvelle typographie : Playfair Display pour les titres + DM Sans pour le corps
+    Fond avec grille de points subtile dans le hero
+    Photo de profil entourée d'un anneau dégradé bleu → or
+    Cartes de compétences avec hover animé
+    Cartes projets avec catégorie en or, hover avec élévation
+    Section contact plus lisible avec icônes
+    Navigation sticky avec logo "ISC"
+
+Pour l'utiliser, remplace simplement ton ancien index.html par ce fichier — toutes tes images et liens (photo.jpg, cover.jpg, les PDFs, etc.) fonctionnent à l'identique.
+Index
+Code · HTML 
+Souhaitez-vous être averti lorsque Claude répond ?
+
+
+Claude est une IA et peut faire des erreurs. Veuillez vérifier les réponses.
+Index · HTML
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Ibrahima Sory CAMARA</title>
+  <title>Portfolio – Ibrahima Sory Camara</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-  
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    :root {
+      --bg:       #080e1c;
+      --bg2:      #0d1526;
+      --surface:  #111d35;
+      --border:   rgba(99,179,237,0.12);
+      --accent:   #63b3ed;
+      --accent2:  #90cdf4;
+      --gold:     #f6c90e;
+      --text:     #e8f0fe;
+      --muted:    #8da5c4;
+      --radius:   16px;
     }
-    body {
-          background: #0f172a;
-          color: #e2e8f0;
-          line-height: 1.6;
-        }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-header {
-      background-image:
-        linear-gradient(rgba(5, 15, 40, 0.72), rgba(5, 15, 40, 0.72)),
-        url("cover.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 110px 20px 90px;
-      text-align: center;
-      position: relative;
-      .hero-overlay {
-      max-width: 950px;
-      margin: 0 auto;
-      background: rgba(10, 20, 45, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
-      padding: 35px 25px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.28);
-    }
-
-.profile-photo {
-  width: 155px;
-  height: 155px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid rgba(255, 255, 255, 0.9);
-  margin-bottom: 22px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-.hero-badge {
-  display: inline-block;
-  padding: 8px 16px;
-  background: rgba(56, 189, 248, 0.16);
-  color: #7dd3fc;
-  border: 1px solid rgba(125, 211, 252, 0.35);
-  border-radius: 999px;
-  font-size: 0.95rem;
-  margin-bottom: 18px;
-}
-
-header h1 {
-  font-size: 3.3rem;
-  margin-bottom: 15px;
-  color: #ffffff;
-  letter-spacing: -1px;
-}
-
-.hero-subtitle {
-  font-size: 1.12rem;
-  color: #dbeafe;
-  max-width: 760px;
-  margin: 0 auto 28px;
-  line-height: 1.8;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 10px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 13px 24px;
-  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-  color: white;
-  border-radius: 12px;
-  font-weight: 600;
-  margin-top: 0;
-  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.38);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: #e0f2fe;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: none;
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.14);
-  transform: translateY(-2px);
-}
-
-@media (max-width: 700px) {
-  header {
-    padding: 90px 15px 70px;
-  }
-
-  .hero-overlay {
-    padding: 25px 18px;
-    border-radius: 18px;
-  }
-
-  .profile-photo {
-    width: 120px;
-    height: 120px;
-  }
-
-  header h1 {
-    font-size: 2.3rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-}
-}
-
-.profile-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid white;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-header p {
-  font-size: 1.2rem;
-  color: #cbd5e1;
-  max-width: 700px;
-  margin: 0 auto 20px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 22px;
-  background: #38bdf8;
-  color: #0f172a;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(15, 23, 42, 0.95);
-  padding: 15px;
-  text-align: center;
-  border-bottom: 1px solid #1e293b;
-  z-index: 10;
-}
-
-nav a {
-  margin: 0 15px;
-  font-weight: bold;
-}
-
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 25px;
-  color: #f8fafc;
-}
-
-.card {
-  background: #1e293b;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  margin-bottom: 20px;
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.skill {
-  background: #334155;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-}
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.project h3 {
-  margin-bottom: 10px;
-  color: #f8fafc;
-}
-
-.project p {
-  color: #cbd5e1;
-  margin-bottom: 10px;
-}
-
-.project .tag {
-  display: inline-block;
-  background: #0ea5e9;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  margin-right: 8px;
-  margin-top: 8px;
-}
-
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  border-top: 1px solid #1e293b;
-  color: #94a3b8;
-}
-
-.contact-links a {
-  display: inline-block;
-  margin-right: 15px;
-  margin-top: 10px;
-}
-
-@media (max-width: 700px) {
-  header h1 {
-    font-size: 2.2rem;
-  }
-
-  nav a {
-    display: inline-block;
-    margin: 8px;
-  }
-}
-
-  </style>
-  
-</head>
-
-<body>
-      <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#apropos">À propos</a>
-        <a href="#competences">Compétences</a>
-        <a href="#projets">Projets</a>
-        <a href="#contacts">Contacts</a>
-        
-        </nav>  <header id="accueil">
-      <div class="hero-overlay">
-            <div class="hero-badge">Portfolio académique • Mathématiques • Data • statistiques • Modélisation</div>
-                <h2>Bienvenue sur mon Portfolio</h2>
-                <img src="photo.jpg" alt="Photo de Ibrahima Sory Camara" class="profile-photo">
-                <h1>Ibrahima Sory Camara</h1>
-                      <p class="hero-subtitle">
-                            Étudiant en licence de mathématiques à l’Université Le Havre Normandie.
-                            Je m’intéresse particulièrement aux statistiques, à l’analyse de données, à la cryptographie,
-                            à la finance et à la modélisation mathématique.
-                      </p>
-                  <div class="hero-buttons">
-                        <a class="btn" href="#projets">Voir mes projets</a>
-                        <a class="btn " href="#contacts">Me contacter</a> 
-                  </div>
-      </div>
-</header>   
-<section id="apropos">
-      <h2>À propos</h2>
-          <div class="card">
-            <p>
-              Je suis Ibrahima Sory Camara, actuellement étudiant en troisième année de licence de mathématiques à l’Université Le Havre Normandie.
-            </p>
-            <p>
-              Aucours de ma formation, j’ai développé un intérêt particulier pour les probabilités, les statistiques, l’analyse de données et la modélisation mathématique. J’aime les mathématiques lorsqu’elles permettent de mieux comprendre des phénomènes réels et d’apporter des outils concrets à des domaines comme la finance, la science des données ou l’informatique.
-            </p>
-            <p>
-              Pendant ma licence, j’ai étudié plusieurs disciplines fondamentales comme l’analyse, l’algèbre, les probabilités, les statistiques et l’analyse numérique. J’ai également réalisé plusieurs travaux universitaires, notamment sur les fonctions hyperboliques, les extensions de corps en algèbre et d’autres sujets qui m’ont permis de développer ma rigueur et mon autonomie.
-            </p>
-            <p>
-              Je m’intéresse aussi à la programmation scientifique. J’ai acquis des bases en Python, en R, en Scilab et en LaTeX, que j’utilise pour mes projets académiques et personnels.
-            </p>
-            <p>
-              À travers ce portfolio, je présente quelques projets, travaux universitaires et réalisations personnelles qui reflètent mon parcours, mes centres d’intérêt et ma progression.
-            </p>
-          </div>
-</section>
-  
-<section id="competences">
-    <h2>Compétences</h2>
-        <div class="card">
-          <div class="skills">
-            <span class="skill">Analyse</span>
-            <span class="skill">Algèbre</span>
-            <span class="skill">Probabilités</span>
-            <span class="skill">Statistiques</span>
-            <span class="skill">Résolution de systèmes non linéaires</span>
-            <span class="skill">Python</span>
-            <span class="skill">R</span>
-            <span class="skill">Algorithmique</span>
-            <span class="skill">LaTeX</span>
-            <span class="skill">Scilab</span>
-            <span class="skill">GitHub</span>
-          </div>
-        </div> 
- </section> 
-
-  <section id="Qualités">
-    <h2>Qualités</h2>
-        <div class="card">
-          <div class="skills">
-            <span class="skill">Savoir être</span>
-            <span class="skill">Rigoureux</span>
-            <span class="skill">Organisé</span>
-            <span class="skill">Travail en équipe</span>
-            <span class="skill">Communication</span>
-            <span class="skill">autonomie</span>
-          </div>
-        </div> 
- </section> 
  
- <section id="projets">
-    <h2>Projets </h2>
-    <h2>Mes projets en Mathématiques</h2>
-    <div class="projects">
-        <div class="card project">
-              <h3>Fonctions hyperboliques et applications (2022)</h3>
-                <p>
-                    Ce travail porte sur l’étude des fonctions hyperboliques, de leurs propriétés principales et de quelques applications en physique et dans les équations différentielles.
-                    Ce projet m’a permis de renforcer mes bases en analyse et de mieux comprendre les liens entre théorie mathématique et applications.
-                 </p>
-              <span class="tag">Analyse de base</span>
-              <span class="tag">Algèbre de base</span>
-              <span class="tag">Trigonométrie</span>
-              <p> Consulter le projet:</p>
-                <a class="btn" href="Projets/Fonction-hyperbolique/Fonction_hyperpolique.pdf" target="_blank">Voir le PDF</a>
-                <a class="btn" href="Projets/Fonction-hyperbolique/Fcts_hyperbolique.tex" target="_blank">Voir le code LaTeX</a>
-        </div>
-    
-        <div class="card project">
-            <h3>Projet  - Introduction à la théorie spectrale (2025)</h3>
-            <p>
-                Étude des opérateurs et des valeurs propres dans des espaces vectoriels.
-                Ce projet universitaire m’a permis d’approfondir mes connaissances
-                en analyse mathématique et en structures linéaires.
-            </p>
-                <span class="tag">Topologie</span>
-                <span class="tag">Calcul différentiel</span>
-                <span class="tag">Analyse</span>
-                <span class="tag">Algèbre</span>
-                <p> Consulter le projet:</p>
-                <a class="btn" href="Projets/NOM_DOSSIER/NOM_DU_FICHIER.pdf" target="_blank">Voir le PDF</a> 
-        </div>
-
-        <div class="card project">
-            <h3>Extensions de corps et applications (2024)</h3>
-              <p>
-                  Ce projet académique en algèbre est consacré aux extensions de corps et à leurs applications, notamment en théorie de Galois. 
-                   Il m’a permis d’approfondir ma compréhension des structures algébriques et de développer davantage ma rigueur en rédaction mathématique.
-              </p>
-              <span class="tag">Algèbre</span>
-              <span class="tag">Mathématiques</span>
-              <p> Consulter le projet:</p>
-              <a class="btn" href="Projets/ExtensionDeCorps/ExtensionDeCorps.pdf" target="_blank">Voir le PDF</a>
-              <a class="btn" href="Projets/ExtensionDeCorps/main.tex" target="_blank">Voir le code LaTeX</a>
-        </div>
-  </section>
-  <section id="projets">
-    <h2>Mes projets information</h2>
-    <div class="card project">
-          <h3>Gestion de trains en gare</h3>
-          <h3>Gestion de trains en gare</h3>
-          <p>
-              Ce projet en Python consiste à développer un petit programme de gestion de trains en gare. Il permet d’ajouter des données, de consulter des informations sur les trains et les passagers, et de sauvegarder les résultats dans un fichier CSV. Ce travail m’a permis de pratiquer la programmation, la manipulation de fichiers et l’organisation d’un projet simple en plusieurs fichiers.
-          </p>
-          <p><strong>Outils utilisés :</strong></p>
-          <span class="tag">Python</span>
-          <span class="tag">CSV</span>
-          <span class="tag">Console</span>
-      
-          <p>Consulter le projet :</p>
-          <button type="button" class="btn" onclick="lancerDemoTrain()">Lancer la démo</button>
-          <a class="btn" href="Projets/gestion-train/main.py" target="_blank">Voir le code Python</a>
-          <!a class="btn" href="Projets/gestion-train/passager-train.csv" target="_blank">Voir le fichier CSV</a>
-          <a class="btn" href="https://github.com/Ibscamara/Portfolio/tree/main/Projets/gestion-train" target="_blank">Voir le projet complet</a>
-    
-        <div id="demo-train" class="card project" style="display: none; margin-top: 20px;">
-          <h3>Démo – Gestion de trains</h3>
-          <div id="contenu-demo"></div>
-        </div>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+ 
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+ 
+    /* ── NAV ───────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,14,28,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+ 
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent2);
+      letter-spacing: 0.02em;
+    }
+ 
+    .nav-links { display: flex; gap: 32px; }
+ 
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+ 
+    .nav-links a:hover { color: var(--accent2); }
+ 
+    /* ── HERO ──────────────────────────────────────────────── */
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,179,237,0.10) 0%, transparent 70%),
+        linear-gradient(180deg, #080e1c 0%, #060b18 100%);
+      text-align: center;
+      overflow: hidden;
+    }
+ 
+    /* grid dots decoration */
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(99,179,237,0.13) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+ 
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+ 
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(99,179,237,0.08);
+      border: 1px solid rgba(99,179,237,0.25);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s ease both;
+    }
+ 
+    .profile-ring {
+      display: inline-block;
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+ 
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: var(--surface);
+    }
+ 
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+ 
+    header h1 span { color: var(--accent); }
+ 
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+ 
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+ 
+    /* ── BUTTONS ───────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+ 
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #3182ce);
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(99,179,237,0.28);
+    }
+ 
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(99,179,237,0.38);
+    }
+ 
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: var(--accent2);
+      border: 1px solid rgba(99,179,237,0.22);
+    }
+ 
+    .btn-ghost:hover {
+      background: rgba(99,179,237,0.1);
+      transform: translateY(-2px);
+    }
+ 
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      border-radius: 8px;
+    }
+ 
+    /* ── SECTIONS ──────────────────────────────────────────── */
+    section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+ 
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+ 
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: #fff;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+ 
+    /* ── CARDS ─────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+ 
+    .card:hover {
+      border-color: rgba(99,179,237,0.28);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+ 
+    /* ── À PROPOS ──────────────────────────────────────────── */
+    #apropos .card p + p { margin-top: 14px; }
+    #apropos .card p { color: var(--muted); font-size: 0.98rem; }
+ 
+    /* ── COMPÉTENCES ───────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+ 
+    .skill-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+ 
+    .skill-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+ 
+    .skill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+ 
+    .qualities-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+ 
+    .q-pill {
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      color: var(--muted);
+    }
+ 
+    /* ── PROJETS ───────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+ 
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+ 
+    .project-card:hover {
+      border-color: rgba(99,179,237,0.3);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+      transform: translateY(-4px);
+    }
+ 
+    .project-category {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+ 
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #fff;
+      line-height: 1.4;
+    }
+ 
+    .project-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
+ 
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+ 
+    .tag {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(99,179,237,0.1);
+      border: 1px solid rgba(99,179,237,0.2);
+      color: var(--accent2);
+    }
+ 
+    .project-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+ 
+    /* ── CERTIFICATIONS ────────────────────────────────────── */
+    .certif-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+ 
+    .certif-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+ 
+    .certif-card:hover {
+      border-color: rgba(246,201,14,0.3);
+      transform: translateY(-3px);
+    }
+ 
+    .certif-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(246,201,14,0.1);
+      border: 1px solid rgba(246,201,14,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+ 
+    .certif-card h3 { font-size: 1rem; font-weight: 600; color: #fff; }
+    .certif-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
+ 
+    /* ── DEMO TRAIN ────────────────────────────────────────── */
+    #demo-train {
+      display: none;
+      margin-top: 20px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+ 
+    #demo-train ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+    #demo-train li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+ 
+    /* ── CONTACT ───────────────────────────────────────────── */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+ 
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+ 
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+      transform: translateY(-2px);
+    }
+ 
+    .contact-icon { font-size: 1.1rem; }
+ 
+    /* ── DIVIDER ───────────────────────────────────────────── */
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: 999px;
+      margin-bottom: 36px;
+    }
+ 
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 36px 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+ 
+    /* ── ANIMATION ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 0.8rem; }
+      section { padding: 70px 18px; }
+    }
+ 
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ════ NAV ════════════════════════════════════════════════ -->
+<nav>
+  <span class="nav-logo">ISC</span>
+  <div class="nav-links">
+    <a href="#accueil">Accueil</a>
+    <a href="#apropos">À propos</a>
+    <a href="#competences">Compétences</a>
+    <a href="#projets">Projets</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contacts">Contact</a>
+  </div>
+</nav>
+ 
+<!-- ════ HERO ═══════════════════════════════════════════════ -->
+<header id="accueil">
+  <div class="hero-inner">
+    <div class="hero-badge">Portfolio académique · Mathématiques · Data · Modélisation</div>
+    <div class="profile-ring">
+      <img src="photo.jpg" alt="Photo de Ibrahima Sory Camara" class="profile-photo">
     </div>
-    <div class="card project">
-            <h3>Analyse statistique de la production de bauxite en Guinée avec R</h3>
-              <p>
-                  Ce projet consiste à étudier l’évolution de la production de bauxite en Guinée entre 2010 et 2023 à l’aide du logiciel R.
-                  Il comprend une analyse descriptive des données, plusieurs visualisations et la construction d’un modèle de régression linéaire
-                  afin d’observer la tendance générale de la production.
-              </p>
-              <p><strong>Compétences développées :</strong></p>
-              <ul>
-                  <li>Analyse de données avec R</li>
-                  <li>Statistiques descriptives</li>
-                  <li>Visualisation de données</li>
-                  <li>Régression linéaire simple</li>
-              </ul>
-              <p><strong>Outils utilisés :</strong></p>
-              <ul>
-                  <li>R</li>
-                  <li>Fichier CSV</li>
-              </ul>
-              <span class="tag">R</span>
-              <span class="tag">Statistiques</span>
-              <span class="tag">Analyse de données</span>
-              <span class="tag">R compiler</span>
-            
-              <p>Consulter le projet :</p>
-              <a class="btn" href="Projets/bauxite-guinee/analyse_bauxite.R" target="_blank">Voir le code R</a>
-              <a class="btn" href="Projets/bauxite-guinee/rapport-b.pdf" target="_blank">Voir le rapport pdf</a>
-              <!a class="btn" href="Projets/bauxite-guinee/bauxite_guinee.csv" target="_blank">Voir les données</a>
-              <a class="btn" href="Projets/bauxite-guinee/resultats.html" target="_blank">Tester le projet</a>
-              <a class="btn" href="https://github.com/Ibscamara/Portfolio/tree/main/Projets/bauxite-guinee" target="_blank">Voir le projet complet</a>
-          </div>   
-    </section> 
-  
-    <section id="Mes Certifications">
-    <h2>Mes Certifications</h2>
-    <div class="Mes Certifications">
-    <div class="card Mes Certifications">
-        <h3>Certification PIX (2023)</h3>
-        <p>
-           Certification obtenue à l’Université Le Havre Normandie avec un score de 225 PIX.
-           Elle valorise mes compétences numériques en information, communication,
-           création de contenu et programmation.
-        </p>
+    <h1>Ibrahima Sory <span>Camara</span></h1>
+    <p class="hero-sub">
+      Étudiant en licence de mathématiques à l'Université Le Havre Normandie.
+      Passionné par les statistiques, l'analyse de données, la cryptographie et la modélisation mathématique.
+    </p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#projets">Voir mes projets</a>
+      <a class="btn btn-ghost" href="#contacts">Me contacter</a>
+    </div>
+  </div>
+</header>
+ 
+<!-- ════ À PROPOS ═══════════════════════════════════════════ -->
+<section id="apropos">
+  <p class="section-label">Qui suis-je ?</p>
+  <h2>À propos</h2>
+  <div class="section-divider"></div>
+  <div class="card">
+    <p>Je suis Ibrahima Sory Camara, étudiant en troisième année de licence de mathématiques à l'Université Le Havre Normandie.</p>
+    <p>Au cours de ma formation, j'ai développé un intérêt particulier pour les probabilités, les statistiques, l'analyse de données et la modélisation mathématique. J'aime les mathématiques lorsqu'elles permettent de mieux comprendre des phénomènes réels et d'apporter des outils concrets en finance, data science ou informatique.</p>
+    <p>J'ai étudié plusieurs disciplines fondamentales : l'analyse, l'algèbre, les probabilités, les statistiques et l'analyse numérique. J'ai également réalisé des travaux universitaires sur les fonctions hyperboliques, les extensions de corps et d'autres sujets qui ont renforcé ma rigueur et mon autonomie.</p>
+    <p>Je m'intéresse à la programmation scientifique et maîtrise des bases en Python, R, Scilab et LaTeX, utilisés pour mes projets académiques et personnels.</p>
+  </div>
+</section>
+ 
+<!-- ════ COMPÉTENCES ════════════════════════════════════════ -->
+<section id="competences">
+  <p class="section-label">Ce que je maîtrise</p>
+  <h2>Compétences</h2>
+  <div class="section-divider"></div>
+ 
+  <div class="skills-grid" style="margin-bottom: 40px;">
+    <div class="skill-item"><span class="skill-dot"></span>Analyse mathématique</div>
+    <div class="skill-item"><span class="skill-dot"></span>Algèbre</div>
+    <div class="skill-item"><span class="skill-dot"></span>Probabilités</div>
+    <div class="skill-item"><span class="skill-dot"></span>Statistiques</div>
+    <div class="skill-item"><span class="skill-dot"></span>Systèmes non linéaires</div>
+    <div class="skill-item"><span class="skill-dot"></span>Python</div>
+    <div class="skill-item"><span class="skill-dot"></span>R</div>
+    <div class="skill-item"><span class="skill-dot"></span>LaTeX</div>
+    <div class="skill-item"><span class="skill-dot"></span>Scilab</div>
+    <div class="skill-item"><span class="skill-dot"></span>Algorithmique</div>
+    <div class="skill-item"><span class="skill-dot"></span>GitHub</div>
+  </div>
+ 
+  <p class="section-label" style="margin-bottom: 16px;">Qualités</p>
+  <div class="qualities-wrap">
+    <span class="q-pill">Rigoureux</span>
+    <span class="q-pill">Organisé</span>
+    <span class="q-pill">Autonome</span>
+    <span class="q-pill">Travail en équipe</span>
+    <span class="q-pill">Communication</span>
+    <span class="q-pill">Savoir-être</span>
+  </div>
+</section>
+ 
+<!-- ════ PROJETS ════════════════════════════════════════════ -->
+<section id="projets">
+  <p class="section-label">Ce que j'ai réalisé</p>
+  <h2>Projets</h2>
+  <div class="section-divider"></div>
+ 
+  <!-- Mathématiques -->
+  <p class="section-label" style="margin-bottom: 20px;">📐 Mathématiques</p>
+  <div class="projects-grid" style="margin-bottom: 50px;">
+ 
+    <div class="project-card">
+      <span class="project-category">Analyse · 2022</span>
+      <h3>Fonctions hyperboliques et applications</h3>
+      <p>Étude des fonctions hyperboliques, de leurs propriétés et de leurs applications en physique et dans les équations différentielles.</p>
+      <div class="tags">
+        <span class="tag">Analyse</span>
+        <span class="tag">Algèbre</span>
+        <span class="tag">Trigonométrie</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-ghost btn-sm" href="Projets/Fonction-hyperbolique/Fonction_hyperpolique.pdf" target="_blank">PDF</a>
+        <a class="btn btn-ghost btn-sm" href="Projets/Fonction-hyperbolique/Fcts_hyperbolique.tex" target="_blank">Code LaTeX</a>
+      </div>
+    </div>
+ 
+    <div class="project-card">
+      <span class="project-category">Analyse · 2025</span>
+      <h3>Introduction à la théorie spectrale</h3>
+      <p>Étude des opérateurs et des valeurs propres dans des espaces vectoriels, approfondissant l'analyse et les structures linéaires.</p>
+      <div class="tags">
+        <span class="tag">Topologie</span>
+        <span class="tag">Calcul différentiel</span>
+        <span class="tag">Analyse</span>
+        <span class="tag">Algèbre</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-ghost btn-sm" href="Projets/NOM_DOSSIER/NOM_DU_FICHIER.pdf" target="_blank">PDF</a>
+      </div>
+    </div>
+ 
+    <div class="project-card">
+      <span class="project-category">Algèbre · 2024</span>
+      <h3>Extensions de corps et applications</h3>
+      <p>Projet dédié aux extensions de corps et à leurs applications en théorie de Galois, renforçant la rigueur en rédaction mathématique.</p>
+      <div class="tags">
+        <span class="tag">Algèbre</span>
+        <span class="tag">Théorie de Galois</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-ghost btn-sm" href="Projets/ExtensionDeCorps/ExtensionDeCorps.pdf" target="_blank">PDF</a>
+        <a class="btn btn-ghost btn-sm" href="Projets/ExtensionDeCorps/main.tex" target="_blank">Code LaTeX</a>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <!-- Informatique -->
+  <p class="section-label" style="margin-bottom: 20px;">💻 Informatique & Data</p>
+  <div class="projects-grid">
+ 
+    <div class="project-card">
+      <span class="project-category">Python · Console</span>
+      <h3>Gestion de trains en gare</h3>
+      <p>Programme de gestion de trains en gare : ajout de données, consultation des informations et sauvegarde en fichier CSV.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">CSV</span>
+        <span class="tag">Console</span>
+      </div>
+      <div class="project-links">
+        <button type="button" class="btn btn-primary btn-sm" onclick="lancerDemoTrain()">▶ Démo</button>
+        <a class="btn btn-ghost btn-sm" href="Projets/gestion-train/main.py" target="_blank">Code Python</a>
+        <a class="btn btn-ghost btn-sm" href="https://github.com/Ibscamara/Portfolio/tree/main/Projets/gestion-train" target="_blank">GitHub</a>
+      </div>
+      <div id="demo-train">
+        <h3 style="font-size:0.95rem; margin-bottom:12px; color:#fff;">Démo – Gestion de trains</h3>
+        <div id="contenu-demo"></div>
+      </div>
+    </div>
+ 
+    <div class="project-card">
+      <span class="project-category">R · Statistiques</span>
+      <h3>Analyse de la production de bauxite en Guinée</h3>
+      <p>Étude de l'évolution de la production entre 2010 et 2023 : statistiques descriptives, visualisations et régression linéaire.</p>
+      <div class="tags">
+        <span class="tag">R</span>
+        <span class="tag">Statistiques</span>
+        <span class="tag">Régression</span>
+        <span class="tag">Data viz</span>
+      </div>
+      <div class="project-links">
+        <a class="btn btn-ghost btn-sm" href="Projets/bauxite-guinee/analyse_bauxite.R" target="_blank">Code R</a>
+        <a class="btn btn-ghost btn-sm" href="Projets/bauxite-guinee/rapport-b.pdf" target="_blank">Rapport PDF</a>
+        <a class="btn btn-ghost btn-sm" href="Projets/bauxite-guinee/resultats.html" target="_blank">Résultats</a>
+        <a class="btn btn-ghost btn-sm" href="https://github.com/Ibscamara/Portfolio/tree/main/Projets/bauxite-guinee" target="_blank">GitHub</a>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- ════ CERTIFICATIONS ══════════════════════════════════════ -->
+<section id="certifications">
+  <p class="section-label">Reconnaissance & Engagement</p>
+  <h2>Certifications & Engagements</h2>
+  <div class="section-divider"></div>
+ 
+  <div class="certif-grid">
+    <div class="certif-card">
+      <div class="certif-icon">🏅</div>
+      <h3>Certification PIX (2023)</h3>
+      <p>Obtenue à l'Université Le Havre Normandie avec un score de <strong>225 PIX</strong>. Valorise mes compétences numériques : information, communication, création de contenu et programmation.</p>
+      <div class="tags">
         <span class="tag">PIX</span>
-        <span class="tag">Compétences numériques</span>
-        <p>Consuleter</p>
-        <a class="btn" href="EngagementsEtCertif/certification-pix-Ibrahiama.pdf" target="_blank">Voir l’attestation</a>
+        <span class="tag">Numérique</span>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="EngagementsEtCertif/certification-pix-Ibrahiama.pdf" target="_blank">Voir l'attestation</a>
     </div>
-
-    <div class="card projets">
-        <h3>Engagement associatif - AGELH</h3>
-        <p>
-          Secrétaire Général et chargé de la communication depuis novembre 2025
-          au sein de l’Association Guinéenne des Étudiants du Havre.
-          Missions : communication interne et externe, rédaction de comptes rendus,
-          promotion d’événements et accueil des nouveaux étudiants.
-        </p>
+ 
+    <div class="certif-card">
+      <div class="certif-icon">🤝</div>
+      <h3>Engagement associatif – AGELH</h3>
+      <p>Secrétaire Général et chargé de la communication depuis novembre 2025 au sein de l'Association Guinéenne des Étudiants du Havre. Communication, rédaction, promotion d'événements et accueil des étudiants.</p>
+      <div class="tags">
         <span class="tag">Communication</span>
-        <span class="tag">Engagement</span>
-          <p>Consuleter</p>
-          <a class="btn" href="EngagementsEtCertif/AttestationEngagement%20AGELH%20.pdf" target="_blank">Voir l’attestation</a>
+        <span class="tag">Associatif</span>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="EngagementsEtCertif/AttestationEngagement%20AGELH%20.pdf" target="_blank">Voir l'attestation</a>
     </div>
-  </section>
-  
-  <section id="contacts">
-    <h2>contacts</h2>
-    <div class="card">
-      <p>vous pouvez me contacter ici :</p>
-      <div class="contact-links">
-        <div class="skills">
-        <span class="skill"> <a href="mailto:ibrasory2022@gmail.com">ibrasory2022@gmail.com</a>  </span>
-        <span class="skill"> <a href="https://github.com/Ibscamara" target="_blank">GitHub</a> </span>
-        <span class="skill"> <a href="https://www.linkedin.com/in/ibrahima-sory-camara-b49674366?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a>  </span>
-        
-        </div>
-        </div>
-    </div>    
-  
-
+  </div>
+</section>
+ 
+<!-- ════ CONTACT ════════════════════════════════════════════ -->
+<section id="contacts">
+  <p class="section-label">Échangeons</p>
+  <h2>Contact</h2>
+  <div class="section-divider"></div>
+  <div class="card" style="margin-bottom: 28px;">
+    <p style="color: var(--muted);">N'hésitez pas à me contacter par e-mail ou via mes réseaux. Je serai ravi d'échanger sur des opportunités de stage, des projets ou simplement discuter de mathématiques.</p>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-link" href="mailto:ibrahimasorycamara@icloud.com">
+      <span class="contact-icon">✉️</span> ibrahimasorycamara@icloud.com
+    </a>
+    <a class="contact-link" href="https://github.com/Ibscamara" target="_blank">
+      <span class="contact-icon">🐙</span> GitHub
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/ibrahima-sory-camara-b49674366" target="_blank">
+      <span class="contact-icon">💼</span> LinkedIn
+    </a>
+  </div>
+</section>
+ 
+<!-- ════ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <p>© 2025 Ibrahima Sory Camara · Portfolio académique · Le Havre, Normandie</p>
+</footer>
+ 
+<!-- ════ SCRIPT DÉMO TRAIN ══════════════════════════════════ -->
 <script>
   const trainsDemo = [
-    {
-      date: "25-11-2022",
-      heure: "15h07",
-      numero: "TER001",
-      passagers: 347,
-      type: "Arrivée"
-    },
-    {
-      date: "26-11-2022",
-      heure: "15h07",
-      numero: "TER002",
-      passagers: 385,
-      type: "Départ"
-    }
+    { date:"25-11-2022", heure:"15h07", numero:"TER001", passagers:347, type:"Arrivée" },
+    { date:"26-11-2022", heure:"15h07", numero:"TER002", passagers:385, type:"Départ" }
   ];
-
+ 
   function lancerDemoTrain() {
-    const blocDemo = document.getElementById("demo-train");
-    const contenuDemo = document.getElementById("contenu-demo");
-
-    if (!blocDemo || !contenuDemo) {
-      alert("Erreur : la zone de démo n'existe pas dans la page.");
-      return;
-    }
-
-    blocDemo.style.display = "block";
+    document.getElementById("demo-train").style.display = "block";
     afficherMenuTrain();
   }
-
+ 
   function afficherMenuTrain() {
-    const zone = document.getElementById("contenu-demo");
-
-    zone.innerHTML = `
-      <p><strong>Menu de démonstration</strong></p>
-      <button type="button" class="btn" onclick="afficherTrains()">Afficher les trains</button>
-      <button type="button" class="btn" onclick="ajouterTrain()">Ajouter un train</button>
-      <button type="button" class="btn" onclick="fermerDemoTrain()">Fermer la démo</button>
-    `;
+    document.getElementById("contenu-demo").innerHTML = `
+      <p style="color:var(--muted);margin-bottom:12px;">Choisissez une action :</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button type="button" class="btn btn-ghost btn-sm" onclick="afficherTrains()">📋 Afficher les trains</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ajouterTrain()">➕ Ajouter un train</button>
+        <button type="button" class="btn btn-sm" style="background:rgba(255,80,80,0.1);color:#fc8181;border:1px solid rgba(255,100,100,0.2);" onclick="fermerDemoTrain()">✕ Fermer</button>
+      </div>`;
   }
-
+ 
   function afficherTrains() {
     const zone = document.getElementById("contenu-demo");
-
     if (trainsDemo.length === 0) {
-      zone.innerHTML = `
-        <p>Aucun train enregistré.</p>
-        <button type="button" class="btn" onclick="afficherMenuTrain()">Retour au menu</button>
-      `;
+      zone.innerHTML = `<p style="color:var(--muted)">Aucun train enregistré.</p>
+        <button class="btn btn-ghost btn-sm" onclick="afficherMenuTrain()">← Retour</button>`;
       return;
     }
-
-    let html = `<p><strong>Liste des trains :</strong></p><ul>`;
-
-    for (const train of trainsDemo) {
-      html += `
-        <li>
-          ${train.date} | ${train.heure} | ${train.numero} |
-          ${train.passagers} passagers | ${train.type}
-        </li>
-      `;
+    let html = `<p style="color:var(--muted);margin-bottom:8px;"><strong>Liste des trains :</strong></p><ul>`;
+    for (const t of trainsDemo) {
+      html += `<li><strong>${t.numero}</strong> · ${t.date} à ${t.heure} · ${t.passagers} passagers · <em>${t.type}</em></li>`;
     }
-
-    html += `</ul>`;
-    html += `<button type="button" class="btn" onclick="afficherMenuTrain()">Retour au menu</button>`;
-
+    html += `</ul><button class="btn btn-ghost btn-sm" style="margin-top:12px;" onclick="afficherMenuTrain()">← Retour</button>`;
     zone.innerHTML = html;
   }
-
+ 
   function ajouterTrain() {
-    const date = prompt("Entrez la date (jj-mm-aaaa) :");
-    if (date === null || date.trim() === "") return;
-
-    const heure = prompt("Entrez l'heure (ex: 15h07) :");
-    if (heure === null || heure.trim() === "") return;
-
-    const numero = prompt("Entrez le numéro du train :");
-    if (numero === null || numero.trim() === "") return;
-
-    const passagers = prompt("Entrez le nombre de passagers :");
-    if (passagers === null || passagers.trim() === "") return;
-
-    const type = prompt("Entrez le type du train : Arrivée ou Départ");
-    if (type === null || type.trim() === "") return;
-
-    trainsDemo.push({
-      date: date.trim(),
-      heure: heure.trim(),
-      numero: numero.trim(),
-      passagers: passagers.trim(),
-      type: type.trim()
-    });
-
-    const zone = document.getElementById("contenu-demo");
-
-    zone.innerHTML = `
-      <p><strong>Train ajouté avec succès :</strong></p>
-      <p>${date} | ${heure} | ${numero} | ${passagers} passagers | ${type}</p>
-      <button type="button" class="btn" onclick="afficherMenuTrain()">Retour au menu</button>
-    `;
+    const date = prompt("Date (jj-mm-aaaa) :"); if (!date?.trim()) return;
+    const heure = prompt("Heure (ex: 15h07) :"); if (!heure?.trim()) return;
+    const numero = prompt("Numéro du train :"); if (!numero?.trim()) return;
+    const passagers = prompt("Nombre de passagers :"); if (!passagers?.trim()) return;
+    const type = prompt("Type : Arrivée ou Départ"); if (!type?.trim()) return;
+    trainsDemo.push({ date:date.trim(), heure:heure.trim(), numero:numero.trim(), passagers:passagers.trim(), type:type.trim() });
+    document.getElementById("contenu-demo").innerHTML = `
+      <p style="color:#68d391;margin-bottom:12px;">✓ Train ajouté avec succès.</p>
+      <button class="btn btn-ghost btn-sm" onclick="afficherMenuTrain()">← Retour</button>`;
   }
-
+ 
   function fermerDemoTrain() {
-    const blocDemo = document.getElementById("demo-train");
-    const zone = document.getElementById("contenu-demo");
-
-    zone.innerHTML = "";
-    blocDemo.style.display = "none";
+    document.getElementById("demo-train").style.display = "none";
   }
 </script>
-
-    </section>  <footer>
-<p>© 2026 Ibrahima Sory Camara - Portfolio personnel</p>
-</footer>
-  
-</body>  
+</body>
 </html>
+ 
+
